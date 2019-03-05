@@ -9,7 +9,7 @@ class MoreInfo extends Component {
     
     render (){
         return(
-            <div className="moreInfo span">
+            <li className="moreInfo">
                 <p>
                 <span>Description:</span>
                 {this.props.description}
@@ -31,7 +31,7 @@ class MoreInfo extends Component {
                 // opts={opts}
                 // onReady={this._onReady}
                 />
-            </div>
+            </li>
         )
     }
 };

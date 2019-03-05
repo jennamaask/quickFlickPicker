@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import MoreInfo from './MoreInfo.js'
+import MoreInfo from "./MoreInfo.js";
 
 const apiKey = "220ba76687a248fe4b74726d993ed22f";
 
@@ -10,10 +10,12 @@ class Results extends Component {
     this.state = {
       movies: [],
       description: "",
-      directors: '',
-      cast: '',
-      genres: '',
+      directors: "",
+      cast: "",
+      genres: "",
       trailer: "",
+      isHidden: true,
+      
     };
   }
 
@@ -32,7 +34,9 @@ class Results extends Component {
     });
   }
 
-movieInfoClick = movieId => {
+  movieInfoClick = (movieId, i) => {    
+    console.log(i)
+
     axios({
       method: "get",
       url: `https://api.themoviedb.org/3/movie/${movieId}`,
@@ -53,14 +57,16 @@ movieInfoClick = movieId => {
       const genreArray = genre
         .map(name => {
           return name.name;
-        }).join(", ");
+        })
+        .join(", ");
       const director = crew
         .filter(member => {
           return member.job === "Director";
         })
         .map(name => {
           return name.name;
-        }).join(', ')
+        })
+        .join(", ");
       const topBilled = [];
       for (let i = 0; i < 5; i++) {
         topBilled.push(cast[i].name);
@@ -70,14 +76,14 @@ movieInfoClick = movieId => {
         directors: director,
         cast: topBilled.join(", "),
         genres: genreArray,
-        trailer: video
+        trailer: video,
+        isHidden: false,
+        activeMovie: i
       });
     });
   };
 
-
-
-    render() {
+  render() {
     return (
       <header>
         <h1>here</h1>
@@ -90,18 +96,23 @@ movieInfoClick = movieId => {
                 <img src={url} alt="" />
                 <button
                   onClick={() => {
-                    this.movieInfoClick(movie.id);
+                    this.movieInfoClick(movie.id, i);
+                    console.log(this);
                   }}
                 >
                   More info
                 </button>
-                <MoreInfo
-                  description={this.state.description}
-                  cast={this.state.cast}
-                  directors={this.state.directors}
-                  genres={this.state.genres}
-                  trailer={this.state.trailer}
-                />
+
+                {(!this.state.isHidden && this.state.activeMovie === i) &&  (
+                  <MoreInfo
+                    id={i}
+                    description={this.state.description}
+                    cast={this.state.cast}
+                    directors={this.state.directors}
+                    genres={this.state.genres}
+                    trailer={this.state.trailer}
+                  />
+                )}
               </li>
             );
           })}
