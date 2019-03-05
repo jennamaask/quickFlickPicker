@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import YouTube from 'react-youtube';
+import MoreInfo from './MoreInfo.js'
 
 const apiKey = "220ba76687a248fe4b74726d993ed22f";
 
@@ -13,14 +13,10 @@ class Results extends Component {
       directors: '',
       cast: '',
       genres: '',
-      trailer: ""
+      trailer: "",
     };
   }
 
-  // async fetchMovies(){
-  //     const movieData = await axios(`https://api.themoviedb.org/3/search/movie)
-
-  //     }`
   componentDidMount() {
     axios({
       method: "get",
@@ -36,7 +32,7 @@ class Results extends Component {
     });
   }
 
-  movieInfoClick = movieId => {
+movieInfoClick = movieId => {
     axios({
       method: "get",
       url: `https://api.themoviedb.org/3/movie/${movieId}`,
@@ -79,7 +75,9 @@ class Results extends Component {
     });
   };
 
-  render() {
+
+
+    render() {
     return (
       <header>
         <h1>here</h1>
@@ -97,17 +95,13 @@ class Results extends Component {
                 >
                   More info
                 </button>
-                <div className="moreInfo">
-                <p>{this.description}</p>
-                <p>{this.cast}</p>
-                <p>{this.directors}</p>
-                <p>{this.genreArray}</p>
-                 <YouTube
-        videoId={this.video}
-        // opts={opts}
-        // onReady={this._onReady}
-      />
-                </div>
+                <MoreInfo
+                  description={this.state.description}
+                  cast={this.state.cast}
+                  directors={this.state.directors}
+                  genres={this.state.genres}
+                  trailer={this.state.trailer}
+                />
               </li>
             );
           })}
