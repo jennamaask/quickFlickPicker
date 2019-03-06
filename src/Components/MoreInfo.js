@@ -6,10 +6,10 @@ class MoreInfo extends Component {
     constructor(props){
         super(props);
     }
-    
+    // using props to create a div with more info about the selected film
     render (){
         return(
-            <li className="moreInfo">
+            <div className="moreInfo">
                 <p>
                 <span>Description:</span>
                 {this.props.description}
@@ -28,10 +28,9 @@ class MoreInfo extends Component {
                 </p>
                 <YouTube
                 videoId={this.props.trailer}
-                // opts={opts}
-                // onReady={this._onReady}
+                // these are the options for the video opts={opts} onReady={this._onReady}
                 />
-            </li>
+            </div>
         )
     }
 };

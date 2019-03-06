@@ -8,6 +8,7 @@ class Results extends Component {
   constructor() {
     super();
     this.state = {
+    //setting initial state
       movies: [],
       description: "",
       directors: "",
@@ -17,7 +18,7 @@ class Results extends Component {
       isHidden: true
     };
   }
-
+  //call to API to start with trending movies on page load
   componentDidMount() {
     axios({
       method: "get",
@@ -33,6 +34,7 @@ class Results extends Component {
     });
   }
 
+  //when user hits less info, change state to isHidden to False, and remove info from active movie
   hideExpandedInfo = () => {
     this.setState({
       isHidden: false,
@@ -40,6 +42,7 @@ class Results extends Component {
     });
   };
 
+//make call to API for specific film details of movie that the user selected
   movieInfoClick = (movieId, i) => {
     axios({
       method: "get",
@@ -55,8 +58,7 @@ class Results extends Component {
       const video = response.data.videos.results[0].key;
       const genre = response.data.genres;
 
-      // These are the retunred info:
-
+      // These are the returned info:
       const description = response.data.overview;
       const genreArray = genre
         .map(name => {
@@ -75,6 +77,7 @@ class Results extends Component {
       for (let i = 0; i < 5; i++) {
         topBilled.push(cast[i].name);
       }
+      //setting state to be returned values
       this.setState({
         description: description,
         directors: director,
@@ -90,14 +93,17 @@ class Results extends Component {
   render() {
     return (
       <header>
-        <h1>here</h1>
+        <h1>Quick Flick Picker</h1>
         <ul>
+        {/* mapping through movies and returning poster & title */}
           {this.state.movies.map((movie, i) => {
             let url = `http://image.tmdb.org/t/p/w185//${movie.poster_path}`;
             return (
               <li key={i}>
                 <p>{movie.title}</p>
                 <img src={url} alt="" />
+
+                {/* conditional rendering - if more info div is displayed, change the button to say hide info // change button to say less info, and on click, it calls the hideExpandedInfo function*/}
                 {this.state.activeMovie !== i ? (
                   <button
                     onClick={() => {
@@ -115,7 +121,7 @@ class Results extends Component {
                     Less info
                   </button>
                 )}
-
+                {/* conditional rendering - if user has clicked on an more info button, and the selected movie equals the index of the li, display the more info div */}
                 {!this.state.isHidden && this.state.activeMovie === i && (
                   <MoreInfo
                     id={i}
