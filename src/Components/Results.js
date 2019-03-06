@@ -14,8 +14,7 @@ class Results extends Component {
       cast: "",
       genres: "",
       trailer: "",
-      isHidden: true,
-      
+      isHidden: true
     };
   }
 
@@ -34,9 +33,14 @@ class Results extends Component {
     });
   }
 
-  movieInfoClick = (movieId, i) => {    
-    console.log(i)
+  hideExpandedInfo = () => {
+    this.setState({
+      isHidden: false,
+      activeMovie: null
+    });
+  };
 
+  movieInfoClick = (movieId, i) => {
     axios({
       method: "get",
       url: `https://api.themoviedb.org/3/movie/${movieId}`,
@@ -94,16 +98,25 @@ class Results extends Component {
               <li key={i}>
                 <p>{movie.title}</p>
                 <img src={url} alt="" />
-                <button
-                  onClick={() => {
-                    this.movieInfoClick(movie.id, i);
-                    console.log(this);
-                  }}
-                >
-                  More info
-                </button>
+                {this.state.activeMovie !== i ? (
+                  <button
+                    onClick={() => {
+                      this.movieInfoClick(movie.id, i);
+                    }}
+                  >
+                    More info
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => {
+                      this.hideExpandedInfo();
+                    }}
+                  >
+                    Less info
+                  </button>
+                )}
 
-                {(!this.state.isHidden && this.state.activeMovie === i) &&  (
+                {!this.state.isHidden && this.state.activeMovie === i && (
                   <MoreInfo
                     id={i}
                     description={this.state.description}
