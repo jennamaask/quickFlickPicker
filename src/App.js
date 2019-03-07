@@ -29,11 +29,11 @@ class App extends Component {
       <Router>
         <div className="App">
          
+         
           <Header 
-            onFilterSubmit={this.onFilterSubmit}  
           />
 
-          <Route path="/" exact render={() => {return(<Results userSearchResult={this.state.searchResults}/>)}}/>
+          <Route path="/" exact render={() => { return (<Results userSearchResult={this.state.searchResults} onFilterSubmit={this.onFilterSubmit} />)}}/>
           <Route path="/movies/:movieId" component={MoreInfo} />
           <Route path="/lists" component={ListPage} />
           <Route path="/lists/:listName" component={SpecificList}/>

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import MoreInfo from "./MoreInfo.js";
+import FilterBar from './FilterBar.js'
 import { Link } from "react-router-dom";
 
 const apiKey = "220ba76687a248fe4b74726d993ed22f";
@@ -65,9 +65,13 @@ class Results extends Component {
   };
 
  //mapping through movies and returning poster & title
+ // taking onFilterSubmit function from Header, passing it down to be used in FilterBar
   render() {
     return (
-      <header>
+      <div>
+        <FilterBar
+          onFilterSubmit={this.props.onFilterSubmit}
+        />
         <h1>Quick Flick Picker</h1>
         {this.state.movies.map(movie => {
           let url = `http://image.tmdb.org/t/p/w185//${movie.poster_path}`;
@@ -79,7 +83,7 @@ class Results extends Component {
             </div>
           );
         })}
-      </header>
+      </div>
     );
   }
 }

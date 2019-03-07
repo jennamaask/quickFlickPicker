@@ -10,10 +10,7 @@ class Header extends Component {
 
     render(){
         return(
-            // taking onFilterSubmit function from Header, passing it down to be used in FilterBar
-            <FilterBar
-                onFilterSubmit={this.props.onFilterSubmit}
-            />
+            <p>Quick Flick Picker</p>
         )
         
     }
