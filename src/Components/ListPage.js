@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import firebase from '../firebase.js';
+import Modal from "./Modal.js";
 import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
 
 
@@ -9,18 +10,19 @@ class ListPage extends Component {
         
         this.state = {
             lists: [],
-            listsName: ''
+            listsName: '',
+            show: false,
         }
     }
     
     componentDidMount(){
         const dbRef = firebase.database().ref();
         dbRef.on("value", res => {
-            // console.log(res.val());
+            console.log(res.val());
             let response = res.val()
             let tempArray = []
-            for(let list in response) {
-                tempArray.push(list)
+            for(let object in response) {
+                tempArray.push(response[object].name)
             }
             this.setState({
                 lists: tempArray
@@ -28,11 +30,23 @@ class ListPage extends Component {
         })
         
     }
+    showModal = () => {
+        this.setState({
+            show: true,
+        })
+    }
+    hideModal = () => {
+        this.setState({
+            show: false,
+        })
+    }
 
     render(){
         return(
            <div>
            <h2>Movie Lists</h2>
+            <button onClick={this.showModal}>Create new list</button>
+            {this.state.show && (<Modal handleClose={this.hideModal} />)}
            <ul>
            {this.state.lists.map((listName, i) => {
                return (<li key={i}>

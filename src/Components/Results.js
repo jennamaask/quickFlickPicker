@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import FilterBar from './FilterBar.js'
 import { Link } from "react-router-dom";
+import Modal from './Modal.js';
 
 const apiKey = "220ba76687a248fe4b74726d993ed22f";
 
@@ -11,7 +12,18 @@ class Results extends Component {
     this.state = {
       //setting initial state
       movies: [],
+      show: false,
     };
+  }
+  showModal = () => {
+    this.setState({
+      show: true,
+    })
+  }
+  hideModal = () => {
+    this.setState({
+      show: false,
+    })
   }
   // call to API to start with trending movies on page load
   // if the props is empty, that means the user has not searched anything yet, if they haven't searched anything yet, the trending movies will populate the screen.
@@ -73,6 +85,8 @@ class Results extends Component {
           onFilterSubmit={this.props.onFilterSubmit}
         />
         <h1>Quick Flick Picker</h1>
+        <button onClick={this.showModal}>Create new list</button>
+        {this.state.show && (<Modal handleClose={this.hideModal} />)}
         {this.state.movies.map(movie => {
           let url = `http://image.tmdb.org/t/p/w185//${movie.poster_path}`;
           return (
