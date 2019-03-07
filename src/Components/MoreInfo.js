@@ -14,6 +14,7 @@ class MoreInfo extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      //setting initial states
       movie: {},
       description: "",
       directors: "",
@@ -22,7 +23,9 @@ class MoreInfo extends Component {
       trailer: ""
     };
   }
+  
   //make call to API for specific film details of movie that the user selected
+  // this.props.match.params.movieId -> when we click on the image, the movie Id goes into the URL and this grabs it from the URL and uses it for the axios call.
   componentDidMount = () => {
     axios({
       method: "get",
@@ -70,7 +73,7 @@ class MoreInfo extends Component {
       });
     });
   };
-  // using props to create a div with more info about the selected film
+  // using state to create a div with more info (title, tagline, trailer, overview, cast, directors, genres) about the selected film
   render() {
     return (
       <div className="moreInfo">

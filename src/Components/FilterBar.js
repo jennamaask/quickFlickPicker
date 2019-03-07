@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from "axios";
 
 class FilterBar extends Component {
     constructor(props) {
@@ -21,7 +20,8 @@ class FilterBar extends Component {
         this.props.onFilterSubmit(this.state.searchQuery)
 
     }
-
+    // call handleFormSubmit function on submit
+    // when user types into filterbar value is updated
     render () {
         return (
           <div className="filterBar">
@@ -37,7 +37,7 @@ class FilterBar extends Component {
                 value={this.state.searchQuery}
                 onChange={this.handleSearchChange}
               />
-              <input type="submit" value="Search" />
+                <input type="submit" value="Search" />     
             </form>
           </div>
         );

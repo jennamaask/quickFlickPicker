@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
 import './App.css';
-import Header from './Components/Header.js'
-import Results from './Components/Results.js'
-import MoreInfo from './Components/MoreInfo.js'
-import axios from 'axios'
-
-const apiKey = "220ba76687a248fe4b74726d993ed22f";
+import Header from './Components/Header.js';
+import Results from './Components/Results.js';
+import MoreInfo from './Components/MoreInfo.js';
+import ListPage from './Components/ListPage.js';
+import SpecificList from './Components/SpecificList';
 
 class App extends Component {
   constructor(props) {
@@ -21,43 +20,25 @@ class App extends Component {
       searchResults: searchQuery
     })
   }
-
-  // searchQueryCall =(searchQuery) => {
-  //   axios({
-  //     method: "get",
-  //     url: "https://api.themoviedb.org/3/search/movie",
-  //     responseType: "json",
-  //     params: {
-  //       api_key: apiKey,
-  //       language: "en-US",
-  //       adult: false,
-  //       query: searchQuery
-  //     }
-  //   }).then(response => {
-  //     console.log(response);
-  //     this.setState({
-  //       searchResults: response.data.results
-  //     });
-  //   });
-  // }
  
- 
+  //sending down onFilterSubmit Function to be used in other Components (FilterBar)
+  //Routed results to the home page and passed down props which was the user's search result
+  //Routed MoreInfo to a new page using movieId as a url param.
   render() {
     return (
       <Router>
         <div className="App">
-          {/* sending down onFilterSubmit Function to be used in other Components (FilterBar) */}
+         
           <Header 
             onFilterSubmit={this.onFilterSubmit}  
           />
 
           <Route path="/" exact render={() => {return(<Results userSearchResult={this.state.searchResults}/>)}}/>
           <Route path="/movies/:movieId" component={MoreInfo} />
+          <Route path="/lists" component={ListPage} />
+          <Route path="/lists/:listName" component={SpecificList}/>
 
-          {/* 
-            <Modal />
-            <ListPage />
-            <Footer /> */}
+      
         </div>
       </Router>
     );
