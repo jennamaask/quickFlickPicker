@@ -28,17 +28,11 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-         
-         
-          <Header 
-          />
-
+          <Header />
           <Route path="/" exact render={() => { return (<Results userSearchResult={this.state.searchResults} onFilterSubmit={this.onFilterSubmit} />)}}/>
           <Route path="/movies/:movieId" component={MoreInfo} />
-          <Route path="/lists" component={ListPage} />
+          <Route path="/lists"exact component={ListPage} />
           <Route path="/lists/:listName" component={SpecificList}/>
-
-      
         </div>
       </Router>
     );

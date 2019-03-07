@@ -14,11 +14,13 @@ class Modal extends Component {
         movies:["speed", "babe"]
     }
   }
+  
   handleChange = (event) => {
     this.setState({
         name: event.target.value
     })
   }
+
   handleSubmit = event => {
       event.preventDefault()
 

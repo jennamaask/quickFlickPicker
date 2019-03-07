@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import YouTube from "react-youtube";
 import axios from "axios";
-import {Link} from 'react-router-dom'
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faChevronCircleLeft, faPlusCircle } from '@fortawesome/free-solid-svg-icons'
+import {Link} from 'react-router-dom';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faChevronCircleLeft, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
+import ChoiceModal from "./ChoiceModal.js";
 
 library.add(faChevronCircleLeft, faPlusCircle)
 
@@ -20,8 +21,20 @@ class MoreInfo extends Component {
       directors: "",
       cast: "",
       genres: "",
-      trailer: ""
+      trailer: "",
+      show: false,
     };
+  }
+
+  showModal = () => {
+    this.setState({
+      show: true,
+    })
+  }
+  hideModal = () => {
+    this.setState({
+      show: false,
+    })
   }
   
   //make call to API for specific film details of movie that the user selected
@@ -81,7 +94,8 @@ class MoreInfo extends Component {
       <Link to='/'>
       <FontAwesomeIcon icon="chevron-circle-left" />
       </Link>
-      <button><FontAwesomeIcon icon='plus-circle'/></button>
+      <FontAwesomeIcon onClick={this.showModal} icon='plus-circle'/>
+      { this.state.show && (<ChoiceModal handleClose={this.hideModal} />) }
           <h2>{this.state.movie.title}</h2>
           <h3>{this.state.movie.tagline}</h3>
         </div>
