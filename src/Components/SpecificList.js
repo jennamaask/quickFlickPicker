@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import firebase from "firebase";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { faDivide } from "@fortawesome/free-solid-svg-icons";
 
 const apiKey = "220ba76687a248fe4b74726d993ed22f";
 
