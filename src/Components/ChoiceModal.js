@@ -30,41 +30,35 @@ class ChoiceModal extends Component {
     });
   }
 
-  //poster path
-  //genre
-  //duration
-chosenList = (listName) => {
-    const dbRef=firebase.database().ref();
-    let matchedObject = '';
-    let tempArray = [];
-    dbRef.on('value', res => {
-        const response = res.val()
-        tempArray= [
-          { 
-            name: this.props.title,
-            poster: `http://image.tmdb.org/t/p/w185//${this.props.posterPath}`,
-            duration: this.props.duration,
-            genre: this.props.genres
-          }
-        ]
-      
-        for (let object in response){
-            if (response.name === listName) {
-              matchedObject = response[object]
-              // response[object].movies.push(tempArray[0])
-            //  console.log(tempArray) 
-              console.log(response[object].movies)
-              // listRef.set({
-              //   movies:tempObject
-              // })
-            }
+  chosenList = listName => {
+    const dbRef = firebase.database().ref();
+    let matchedObject = "";
+    let tempObject = {};
+    let response;
+
+    tempObject = {
+      name: this.props.title,
+      poster: `http://image.tmdb.org/t/p/w185//${this.props.poster}`,
+      duration: this.props.duration,
+      genre: this.props.genre
+    };
+
+    dbRef.on("value", res => {
+      response = res.val();
+      //going through each object in database response, checking to see if list names match, once we get to the list name that is the same as the list name we clicked on, we go into the object to determine if it has a movie array already.
+      for (let object in response) {
+        if (response[object].name === listName) {
+          matchedObject = object;
         }
-    })
-
-    dbRef[matchedObject].movies.push(tempArray)
-
+      }
+    });
+    const listRef = dbRef.child(matchedObject);
     
-}
+    // if (response[matchedObject].movies === undefined) {
+      listRef.child("movies").child(this.props.movieId).set(tempObject);
+      //ERROR HANDLING - Add an if statment so the user can't add the same move to their list multiple times - will involve our favourite array method map.
+  };
+
   //print user's lists to screen
   //icon to close modal
   //calling this.props.handleClose from the MoreInfo page
@@ -73,7 +67,15 @@ chosenList = (listName) => {
       <div>
         <h1>I am a mojal</h1>
         {this.state.lists.map(list => {
-          return <p onClick={()=>{this.chosenList(list)}}>{list}</p>;
+          return (
+            <p
+              onClick={() => {
+                this.chosenList(list);
+              }}
+            >
+              {list}
+            </p>
+          );
         })}
         <FontAwesomeIcon icon="times-circle" onClick={this.props.handleClose} />
       </div>

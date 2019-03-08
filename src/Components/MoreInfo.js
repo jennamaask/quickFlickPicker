@@ -96,7 +96,7 @@ class MoreInfo extends Component {
       <FontAwesomeIcon icon="chevron-circle-left" />
       </Link>
       <FontAwesomeIcon onClick={this.showModal} icon='plus-circle'/>
-      { this.state.show && (<ChoiceModal title={this.state.movie.title} poster={this.state.movie.poster_path} duration={this.state.movie.runtime} genre={this.state.genres} handleClose={this.hideModal} />) }
+          {this.state.show && (<ChoiceModal title={this.state.movie.title} poster={this.state.movie.poster_path} duration={this.state.movie.runtime} genre={this.state.genres} movieId={this.props.match.params.movieId} handleClose={this.hideModal} />) }
 
           <h2>{this.state.movie.title}</h2>
           <h3>{this.state.movie.tagline}</h3>

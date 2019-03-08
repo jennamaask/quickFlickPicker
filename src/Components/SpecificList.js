@@ -1,66 +1,54 @@
-import React, { Component } from 'react';
-import firebase from 'firebase';
-import { Link} from 'react-router-dom';
+import React, { Component } from "react";
+import firebase from "firebase";
+import { Link } from "react-router-dom";
 import axios from "axios";
-import { faDivide } from '@fortawesome/free-solid-svg-icons';
-
+import { faDivide } from "@fortawesome/free-solid-svg-icons";
 
 const apiKey = "220ba76687a248fe4b74726d993ed22f";
 
 class SpecificList extends Component {
-    constructor() {
-        super();
-        //setting state
-        this.state = {
-            listMovies:[],
+  constructor() {
+    super();
+    //setting state
+    this.state = {
+      listMovies: ["speed"]
+    };
+  }
+
+  componentDidMount() {
+    let tempArray = [];
+    const dbRef = firebase.database().ref();
+    dbRef.on("value", res => {
+      const response = res.val();
+      //find which object in our database matches the name of the list we have clicked on
+      for (let object in response) {
+        if (this.props.match.params.listName === response[object].name) {
+          for (let movie in response[object].movies) {
+            tempArray.push(response[object].movies[movie]);
+          }
         }
-    }
+      }
+      this.setState({
+        listMovies: tempArray
+      });
+    });
+  }
 
-    componentDidMount(){
-        const dbRef = firebase.database().ref()
-        dbRef.on("value", res => {
-            const response = res.val() 
-            for(let object in response){
-                if (this.props.match.params.listName === response[object].name ){
-                    this.setState({
-                        listMovies: response[object].movies
-                    })
-                }
-            }
-        })
-    }
+  render() {
+    return (
+      <div>
+        <h2>{this.props.match.params.listName}</h2>
+        {this.state.listMovies.map(movieId => {
 
-    // componentDidUpdate() {
-    //     const movieIdArray = this.state.listMovies.map(movieId => {
-    //         axios({
-    //             method: "get",
-    //             url: `https://api.themoviedb.org/3/movie/${movieId}`,
-    //             responseType: "json",
-    //             params: {
-    //                 api_key: apiKey,
-    //                 language: "en-US",
-    //                 adult: false,
-    //             }
-    //         }).then(response => {
-    //             console.log(response);
-    //         });
-    //     })
-    // }
+          return (
+            // <img src={this.state.movieId.poster} alt={`Poster of ${this.state.movieId.name}`} />
+             console.log("sup", movieId)
+          );
+        })}
 
-
-    render() {
-        return(
-            <div>
-
-                <h2>{this.props.match.params.listName}</h2>
-                {this.state.listMovies.map(movieId => {
-                    return (
-                        <p>{movieId}</p>
-                    )
-                })}
-            </div>
-        )
-    }
+      </div>
+    );
+  }
 }
 
-export default SpecificList
+export default SpecificList;
