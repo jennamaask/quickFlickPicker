@@ -1,16 +1,14 @@
 import React, { Component } from "react";
 import firebase from "firebase";
 import { Link } from "react-router-dom";
-import axios from "axios";
-
-const apiKey = "220ba76687a248fe4b74726d993ed22f";
+import NatLangForm from './NatLangForm.js'
 
 class SpecificList extends Component {
   constructor() {
     super();
     //setting state
     this.state = {
-      listMovies: ["speed"]
+      listMovies: []
     };
   }
 
@@ -44,7 +42,7 @@ class SpecificList extends Component {
             <img src={movieId.poster} alt={`Poster of ${movieId.name}`} />
           );
         })}
-
+<NatLangForm movieInfo={this.state.listMovies}/>
       </div>
     );
   }

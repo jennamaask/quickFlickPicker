@@ -1,26 +1,29 @@
 import React, { Component } from "react";
-import firebase from 'firebase.js'
 
 class NatLangForm extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state={
         genre: '',
         time:''
     }
   }
-
+ //LEFT OFF HERE
   handleChange = (event) => {
     this.setState({
         [event.target.name]: event.target.value
     })
   }
-
+//LEFT OFF HERE
   handleSubmit = (event) =>{
+    const genreFinder = new RegExp(this.state.genre, "i")
     event.preventDefault();
-
-    const dbRef=firebase.database().ref();
+    const filteredMovies = this.props.movieInfo.filter((movie) => {
+    return (movie.duration <= this.state.time && movie.genre.match(genreFinder))
     
+})
+
+console.log(filteredMovies);
 
   }
 
@@ -28,10 +31,13 @@ class NatLangForm extends Component {
     return (
       <div>
         <p>just a p tag</p>
-        <form>
+        <form onSubmit={this.handleSubmit}>
           I feel like watching
-          
-          <select name="genre" value={this.state.genre}>
+          <select
+            name="genre"
+            value={this.state.genre}
+            onChange={this.handleChange}
+          >
             <option value="all">any genre of movie</option>
             <option value="action">an action movie</option>
             <option value="adventure">an adventure movie</option>
@@ -54,7 +60,11 @@ class NatLangForm extends Component {
             <option value="western">a western</option>
           </select>
           and I have
-          <select name="time" value={this.state.time}>
+          <select
+            name="time"
+            value={this.state.time}
+            onChange={this.handleChange}
+          >
             <option value="90">less than 1.5 hours</option>
             <option value="120">less than 2 hours</option>
             <option value="121">all of the time in the world</option>
