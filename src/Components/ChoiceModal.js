@@ -33,22 +33,35 @@ class ChoiceModal extends Component {
   //poster path
   //genre
   //duration
-
 chosenList = (listName) => {
-    console.log(listName)
     const dbRef=firebase.database().ref();
-    
+    let matchedObject = '';
+    let tempArray = [];
     dbRef.on('value', res => {
         const response = res.val()
-
+        tempArray= [
+          { 
+            name: this.props.title,
+            poster: `http://image.tmdb.org/t/p/w185//${this.props.posterPath}`,
+            duration: this.props.duration,
+            genre: this.props.genres
+          }
+        ]
+      
         for (let object in response){
-            if (response[object].name === listName) {
-                //do something
+            if (response.name === listName) {
+              matchedObject = response[object]
+              // response[object].movies.push(tempArray[0])
+            //  console.log(tempArray) 
+              console.log(response[object].movies)
+              // listRef.set({
+              //   movies:tempObject
+              // })
             }
         }
     })
 
-    
+    dbRef[matchedObject].movies.push(tempArray)
 
     
 }
