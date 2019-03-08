@@ -7,14 +7,14 @@ import { BrowserRouter as Router, Link, Route } from "react-router-dom";
 class ListPage extends Component {
   constructor() {
     super();
-
+//setting initial state
     this.state = {
       lists: [],
       listsName: "",
       show: false
     };
   }
-
+  //connecting to firebase, we're grabbing the user's list names and setting them to a temporary array, and then setting state of the lists array to the temporary array.
   componentDidMount() {
     const dbRef = firebase.database().ref();
     dbRef.on("value", res => {
@@ -29,6 +29,8 @@ class ListPage extends Component {
       });
     });
   }
+
+  //creating list modal, show and hide on click.
   showModal = () => {
     this.setState({
       show: true
@@ -39,7 +41,8 @@ class ListPage extends Component {
       show: false
     });
   };
-
+  
+//on click of create new list, modal appears for user to enter list name, also this page is displaying the lists the user already has.
   render() {
     return (
       <div>

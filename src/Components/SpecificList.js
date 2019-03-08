@@ -10,6 +10,7 @@ const apiKey = "220ba76687a248fe4b74726d993ed22f";
 class SpecificList extends Component {
     constructor() {
         super();
+        //setting state
         this.state = {
             listMovies:[],
         }

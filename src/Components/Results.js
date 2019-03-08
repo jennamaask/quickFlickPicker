@@ -15,6 +15,8 @@ class Results extends Component {
       show: false,
     };
   }
+
+  //show / hide modal 
   showModal = () => {
     this.setState({
       show: true,

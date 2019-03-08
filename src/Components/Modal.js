@@ -9,30 +9,35 @@ library.add(faTimesCircle)
 class Modal extends Component {
   constructor(props) {
     super(props);
+    //setting initial state
     this.state = {
         name: '',
         movies:["speed", "babe"]
     }
   }
-  
+  //creating event to set state of name to the value the user enters.
   handleChange = (event) => {
     this.setState({
         name: event.target.value
     })
   }
 
+ 
   handleSubmit = event => {
       event.preventDefault()
-
-      if (this.state.name === '') return
-      const dbRef = firebase.database().ref();
-
-      dbRef.push(this.state);
-      this.setState({
-          name: ''
-      })
-
+//conditional, if name is not an empty string, grab data from firebase
+      if (this.state.name !== '') {
+        const dbRef = firebase.database().ref();
+        //pushing state to firebase
+              dbRef.push(this.state);
+        //setting state back to an empty string on submit
+              this.setState({
+                  name: ''
+              })
+      }
   }
+//close modal on click, calling props to pass handle close
+//user enters list name on change call handle change
 
   render() {
     return (

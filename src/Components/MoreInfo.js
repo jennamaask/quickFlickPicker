@@ -25,7 +25,7 @@ class MoreInfo extends Component {
       show: false,
     };
   }
-
+  //functions to show / hide modals
   showModal = () => {
     this.setState({
       show: true,

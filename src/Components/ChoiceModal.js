@@ -6,14 +6,17 @@ import { faTimesCircle, faDivide } from '@fortawesome/free-solid-svg-icons'
 
 library.add(faTimesCircle)
 
+
 class ChoiceModal extends Component {
     constructor(props){
         super(props)
+        //setting initial state
         this.state = {
             lists : []
         }
     }
-    
+
+// connecting to firebase, getting user's list names, creating a temporary array to hold the names, and setting state to the new temporary array
     componentDidMount(){
         const dbRef = firebase.database().ref()
         dbRef.on("value", res => {
@@ -28,6 +31,9 @@ class ChoiceModal extends Component {
         })
     }
 
+//print user's lists to screen
+//icon to close modal
+//calling this.props.handleClose from the MoreInfo page
     render(){
         return(
             <div>
@@ -41,7 +47,6 @@ class ChoiceModal extends Component {
             </div>
         )
     }
-
 }
 
 export default ChoiceModal
