@@ -38,11 +38,11 @@ class SpecificList extends Component {
     return (
       <div>
         <h2>{this.props.match.params.listName}</h2>
+        <Link to='/'>Search More Movies</Link>
+        <Link to='/lists'>Go back to Lists</Link>
         {this.state.listMovies.map(movieId => {
-
           return (
-            // <img src={this.state.movieId.poster} alt={`Poster of ${this.state.movieId.name}`} />
-             console.log("sup", movieId)
+            <img src={movieId.poster} alt={`Poster of ${movieId.name}`} />
           );
         })}
 

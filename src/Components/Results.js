@@ -87,6 +87,9 @@ class Results extends Component {
           onFilterSubmit={this.props.onFilterSubmit}
         />
         <h1>Quick Flick Picker</h1>
+        <Link to='/lists'>
+          Go to Lists
+        </Link>
         <button onClick={this.showModal}>Create new list</button>
         {this.state.show && (<Modal handleClose={this.hideModal} />)}
         {this.state.movies.map(movie => {

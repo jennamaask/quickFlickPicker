@@ -47,6 +47,9 @@ class ListPage extends Component {
     return (
       <div>
         <h2>Movie Lists</h2>
+        <Link to="/">
+          Search More Movies
+        </Link>
         <button onClick={this.showModal}>Create new list</button>
         {this.state.show && <Modal handleClose={this.hideModal} />}
         <ul>
