@@ -25,7 +25,7 @@ class Modal extends Component {
  
   handleSubmit = event => {
       event.preventDefault()
-//conditional, if name is not an empty string, grab data from firebase
+      //conditional, if name is not an empty string, grab data from firebase
       if (this.state.name !== '') {
         const dbRef = firebase.database().ref();
         //pushing state to firebase
@@ -36,9 +36,9 @@ class Modal extends Component {
               })
       }
   }
+
 //close modal on click, calling props to pass handle close
 //user enters list name on change call handle change
-
   render() {
     return (
         <div>
