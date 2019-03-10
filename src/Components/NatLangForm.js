@@ -11,13 +11,13 @@ class NatLangForm extends Component {
       randomMovie: ''
     };
   }
-  //LEFT OFF HERE
+  
   handleChange = event => {
     this.setState({
       [event.target.name]: event.target.value
     });
   };
-  //LEFT OFF HERE
+
   handleSubmit = event => {
     const genreFinder = new RegExp(this.state.genre, "i");
     event.preventDefault();
