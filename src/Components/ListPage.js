@@ -3,11 +3,10 @@ import firebase from "../firebase.js";
 import Modal from "./Modal.js";
 import { BrowserRouter as Router, Link, Route } from "react-router-dom";
 
-
 class ListPage extends Component {
   constructor() {
     super();
-//setting initial state
+    //setting initial state
     this.state = {
       lists: [],
       listsName: "",
@@ -41,15 +40,31 @@ class ListPage extends Component {
       show: false
     });
   };
-  
-//on click of create new list, modal appears for user to enter list name, also this page is displaying the lists the user already has.
+
+  removeList = (listName) => {
+    {
+      const dbRef = firebase.database().ref()
+      let matchedObject = ''
+      dbRef.on("value", res => {
+        let response = res.val();
+        //going through each object in database response, checking to see if list names match, once we get to the list name that is the same as the list name we clicked on, we go into the object to determine if it has a movie array already.
+        for (let object in response) {
+          if (response[object].name === listName) {
+            matchedObject = object;
+          }
+        }
+      });
+      const listRef = dbRef.child(matchedObject);
+      listRef.remove()
+    }
+  }
+
+  //on click of create new list, modal appears for user to enter list name, also this page is displaying the lists the user already has.
   render() {
     return (
       <div>
         <h2>Movie Lists</h2>
-        <Link to="/">
-          Search More Movies
-        </Link>
+        <Link to="/">Search More Movies</Link>
         <button onClick={this.showModal}>Create new list</button>
         {this.state.show && <Modal handleClose={this.hideModal} />}
         <ul>
@@ -58,8 +73,15 @@ class ListPage extends Component {
             return (
               <li key={i}>
                 <Link to={`/lists/${listName}`}>
-                  <p>{listName}</p>
+                {/* adding space back to list names displayed on list page */}
+                  <p>{listName.replace(/-/g, ' ')}</p>
                 </Link>
+                <button 
+                  className="removeList" 
+                  onClick= { () => { this.removeList(listName) }}
+                >
+                  Remove List 
+                </button>
               </li>
             );
           })}
