@@ -3,6 +3,11 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 import firebase from "firebase";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+
+const MySwal = withReactContent(Swal);
+
 
 library.add(faTimesCircle);
 
@@ -12,8 +17,28 @@ class Modal extends Component {
     //setting initial state
     this.state = {
       name: "",
-      movies: []
+      movies: [],
+      show: false,
     };
+  }
+  confirmAlert = () => {
+    MySwal.fire({
+      title: <p>Hello World</p>,
+      footer: "Copyright 2018",
+      onOpen: () => {
+        // `MySwal` is a subclass of `Swal`
+        //   with all the same instance & static methods
+        MySwal.clickConfirm();
+      }
+    }).then(() => {
+      return MySwal.fire({
+        position: 'top-end',
+        type: 'success',
+        title: 'List created',
+        showConfirmButton: false,
+        timer: 1500});
+    });
+  
   }
   //creating event to set state of name to the value the user enters.
   handleChange = event => {
@@ -50,8 +75,9 @@ class Modal extends Component {
           dbRef.push(this.state);
         }
         this.setState({
-          name: ""
+          name: "",
         });
+        this.confirmAlert()
       });
     }
   };
