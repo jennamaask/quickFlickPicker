@@ -14,6 +14,7 @@ const apiKey = "220ba76687a248fe4b74726d993ed22f";
 class MoreInfo extends Component {
   constructor(props) {
     super(props);
+    this.goBack = this.goBack.bind(this);
     this.state = {
       //setting initial states
       movie: {},
@@ -36,6 +37,9 @@ class MoreInfo extends Component {
     this.setState({
       show: false,
     })
+  }
+  goBack() {
+    this.props.history.goBack();
   }
   
   //make call to API for specific film details of movie that the user selected
@@ -92,9 +96,9 @@ class MoreInfo extends Component {
     return (
       <div className="moreInfo">
       <div>
-      <Link to='/'>
-      <FontAwesomeIcon icon="chevron-circle-left" />
-      </Link>
+  
+      <FontAwesomeIcon onClick={this.goBack} icon="chevron-circle-left" />
+  
       <FontAwesomeIcon onClick={this.showModal} icon='plus-circle'/>
           {this.state.show && (<ChoiceModal title={this.state.movie.title} poster={this.state.movie.poster_path} duration={this.state.movie.runtime} genre={this.state.genres} movieId={this.props.match.params.movieId} handleClose={this.hideModal} />) }
 

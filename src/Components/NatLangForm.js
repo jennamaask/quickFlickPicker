@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Swal from 'sweetalert2-react';
 
 class NatLangForm extends Component {
   constructor(props) {
