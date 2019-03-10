@@ -17,6 +17,7 @@ const apiKey = "220ba76687a248fe4b74726d993ed22f";
 class MoreInfo extends Component {
   constructor(props) {
     super(props);
+    this.goBack = this.goBack.bind(this);
     this.state = {
       //setting initial states
       movie: {},
@@ -37,9 +38,13 @@ class MoreInfo extends Component {
   };
   hideModal = () => {
     this.setState({
-      show: false
-    });
-  };
+      show: false,
+    })
+  }
+  goBack() {
+    this.props.history.goBack();
+  }
+  
 
   //make call to API for specific film details of movie that the user selected
   // this.props.match.params.movieId -> when we click on the image, the movie Id goes into the URL and this grabs it from the URL and uses it for the axios call.
@@ -95,9 +100,7 @@ class MoreInfo extends Component {
     return (
       <div className="moreInfo">
         <div>
-          <Link to="/">
-            <FontAwesomeIcon icon="chevron-circle-left" />
-          </Link>
+          <FontAwesomeIcon onClick={this.goBack} icon="chevron-circle-left" />
           <FontAwesomeIcon onClick={this.showModal} icon="plus-circle" />
           {this.state.show && (
             <ChoiceModal
@@ -109,6 +112,7 @@ class MoreInfo extends Component {
               handleClose={this.hideModal}
             />
           )}
+
 
           <h2>{this.state.movie.title}</h2>
           <h3>{this.state.movie.tagline}</h3>

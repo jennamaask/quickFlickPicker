@@ -64,8 +64,14 @@ class SpecificList extends Component {
           <div>
             {this.state.listMovies.map(movieId => {
               return (
+
                 <div>
-                  <img src={movieId.poster} alt={`Poster of ${movieId.name}`} />
+                  <Link to={`/movies/${this.state.movieId}`}>
+                  <img
+                    src={movieId.poster}
+                    alt={`Poster of ${movieId.name}`}
+                  />
+                </Link>
                   <div className="overlay">
                     <button
                       className="removeButton"
@@ -81,6 +87,7 @@ class SpecificList extends Component {
             })}
             <NatLangForm movieInfo={this.state.listMovies} />
           </div>
+
         )}
       </div>
     );
