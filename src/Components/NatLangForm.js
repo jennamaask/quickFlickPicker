@@ -27,7 +27,7 @@ class NatLangForm extends Component {
     console.log(filteredMovies);
     //if filtered movies is empty, give user an error message
     if (filteredMovies.length===0) {
-      console.log("dummy")
+      alert("Your search returned no results, try again.")
     };
   };
 
@@ -78,6 +78,8 @@ class NatLangForm extends Component {
           </label>
           <input id="filterList" type="submit" value="Find me a movie" />
         </form>
+
+        
       </div>
     );
   }
