@@ -27,7 +27,7 @@ class NatLangForm extends Component {
     console.log(filteredMovies);
     //if filtered movies is empty, give user an error message
     if (filteredMovies.length===0) {
-      return "dummy"
+      console.log("dummy")
     };
   };
 

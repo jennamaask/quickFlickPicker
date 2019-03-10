@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import firebase from "firebase";
 import { Link } from "react-router-dom";
-import NatLangForm from './NatLangForm.js'
+import NatLangForm from "./NatLangForm.js";
 
 class SpecificList extends Component {
   constructor() {
@@ -35,14 +35,12 @@ class SpecificList extends Component {
     return (
       <div>
         <h2>{this.props.match.params.listName}</h2>
-        <Link to='/'>Search More Movies</Link>
-        <Link to='/lists'>Go back to Lists</Link>
+        <Link to="/">Search More Movies</Link>
+        <Link to="/lists">Go back to Lists</Link>
         {this.state.listMovies.map(movieId => {
-          return (
-            <img src={movieId.poster} alt={`Poster of ${movieId.name}`} />
-          );
+          return <img src={movieId.poster} alt={`Poster of ${movieId.name}`} />;
         })}
-<NatLangForm movieInfo={this.state.listMovies}/>
+        <NatLangForm movieInfo={this.state.listMovies} />
       </div>
     );
   }
