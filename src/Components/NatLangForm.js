@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 
-
 class NatLangForm extends Component {
   constructor(props) {
     super(props);

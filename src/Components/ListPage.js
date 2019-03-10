@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import firebase from "../firebase.js";
 import Modal from "./Modal.js";
-import { BrowserRouter as Router, Link, Route } from "react-router-dom";
+import {Link} from "react-router-dom";
+
 
 class ListPage extends Component {
   constructor() {
@@ -41,6 +42,7 @@ class ListPage extends Component {
     });
   };
 
+  //remove
   removeList = (listName) => {
     {
       const dbRef = firebase.database().ref()
@@ -82,6 +84,7 @@ class ListPage extends Component {
                 >
                   Remove List 
                 </button>
+
               </li>
             );
           })}

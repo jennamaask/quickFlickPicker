@@ -6,7 +6,6 @@ import Results from "./Components/Results.js";
 import MoreInfo from "./Components/MoreInfo.js";
 import ListPage from "./Components/ListPage.js";
 import SpecificList from "./Components/SpecificList";
-import NatLangForm from "./Components/NatLangForm";
 
 class App extends Component {
   constructor(props) {
