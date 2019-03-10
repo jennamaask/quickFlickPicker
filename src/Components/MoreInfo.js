@@ -41,6 +41,7 @@ class MoreInfo extends Component {
       show: false,
     })
   }
+  //go back to previous page
   goBack() {
     this.props.history.goBack();
   }
