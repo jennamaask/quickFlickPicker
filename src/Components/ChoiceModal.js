@@ -37,7 +37,7 @@ class ChoiceModal extends Component {
     let response;
 
     tempObject = {
-      id: this.props.id,
+      id: this.props.movieId,
       name: this.props.title,
       poster: `http://image.tmdb.org/t/p/w185//${this.props.poster}`,
       duration: this.props.duration,

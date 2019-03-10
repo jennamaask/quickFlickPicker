@@ -1,12 +1,14 @@
 import React, { Component } from "react";
-import Swal from "sweetalert2-react";
+import { Redirect } from "react-router-dom";
 
 class NatLangForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
       genre: "",
-      time: ""
+      time: "",
+      toMoreInfo: false,
+      randomMovie: ''
     };
   }
   //LEFT OFF HERE
@@ -28,13 +30,24 @@ class NatLangForm extends Component {
     //if filtered movies is empty, give user an error message
     if (filteredMovies.length === 0) {
       alert("Your search returned no results, try again.");
+    } else {
+      const randomMovie = filteredMovies[Math.floor(Math.random() * filteredMovies.length)]
+      this.setState({
+        randomMovie: randomMovie.id,
+        toMoreInfo: true
+      })
     }
+
+    
   };
 
   render() {
+    if (this.state.toMoreInfo === true) {
+      return <Redirect to={`/movies/${this.state.randomMovie}`}/>
+    } 
+   
     return (
       <div>
-        <p>just a p tag</p>
         <form onSubmit={this.handleSubmit}>
           I feel like watching
           <select
@@ -42,7 +55,7 @@ class NatLangForm extends Component {
             value={this.state.genre}
             onChange={this.handleChange}
           >
-            <option value="all">any genre of movie</option>
+            <option value="[\s\S]*">any genre of movie</option>
             <option value="action">an action movie</option>
             <option value="adventure">an adventure movie</option>
             <option value="animation">an animated movie</option>
@@ -71,13 +84,14 @@ class NatLangForm extends Component {
           >
             <option value="90">less than 1.5 hours</option>
             <option value="120">less than 2 hours</option>
-            <option value="121">all of the time in the world</option>
+            <option value="99999">all of the time in the world</option>
           </select>
           <label className="visuallyHidden" htmlFor="filterList">
             Filter List
           </label>
           <input id="filterList" type="submit" value="Find me a movie" />
         </form>
+        
       </div>
     );
   }
