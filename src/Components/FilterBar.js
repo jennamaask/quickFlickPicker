@@ -19,6 +19,9 @@ class FilterBar extends Component {
         event.preventDefault();
         this.props.onFilterSubmit(this.state.searchQuery)
 
+        this.setState({
+          searchQuery:''
+        })
     }
     // call handleFormSubmit function on submit
     // when user types into filterbar value is updated

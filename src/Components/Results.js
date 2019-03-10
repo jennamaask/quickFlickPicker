@@ -40,8 +40,14 @@ class Results extends Component {
           api_key: apiKey
         }
       }).then(response => {
+        let tempArray = []
+        response.data.results.map((result) => {
+          if (result.poster_path) {
+            tempArray.push(result)
+          }
+        })
         this.setState({
-          movies: response.data.results
+          movies: tempArray
         });
       });
     } else {
@@ -59,7 +65,6 @@ class Results extends Component {
 
   // user search result to do another API call and set state to those results.
   searchQueryCall = searchQuery => {
-    console.log("before axios");
     axios({
       method: "get",
       url: "https://api.themoviedb.org/3/search/movie",
@@ -71,9 +76,14 @@ class Results extends Component {
         query: searchQuery
       }
     }).then(response => {
-      console.log("test", response);
+      let tempArray = []
+      response.data.results.map((result) => {
+        if(result.poster_path) {
+          tempArray.push(result)
+        }
+      })
       this.setState({
-        movies: response.data.results
+        movies:tempArray
       });
     });
   };
@@ -92,19 +102,26 @@ class Results extends Component {
         </Link>
         <button onClick={this.showModal}>Create new list</button>
         {this.state.show && (<Modal handleClose={this.hideModal} />)}
-        {this.state.movies.map(movie => {
-          let url = `http://image.tmdb.org/t/p/w185//${movie.poster_path}`;
-          return (
-            <div key={movie.id}>
-              <Link to={`/movies/${movie.id}`}>
-                <img src={url} alt={`Poster of ${movie.title}`} />
-              </Link>
-            </div>
-          );
-        })}
-      </div>
-    );
+    
+              {this.state.movies.length === 0 ? (<p>Your search came back with no results</p>) :  (
+                <div>
+                {
+                  this.state.movies.map(movie => {
+                    let url = `http://image.tmdb.org/t/p/w185//${movie.poster_path}`;
+                    return (
+                      <div key={movie.id}>
+                        <Link to={`/movies/${movie.id}`}>
+                          <img src={url} alt={`Poster of ${movie.title}`} />
+                        </Link>
+                      </div>
+                    )}
+                  )
+                } 
+              </div>
+            )}
+          </div>
+        )
+    }
   }
-}
 
 export default Results;

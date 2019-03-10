@@ -11,8 +11,8 @@ class Modal extends Component {
     super(props);
     //setting initial state
     this.state = {
-      name: '',
-      movies: ['speed', 'babe']
+      name: "",
+      movies: []
     };
   }
   //creating event to set state of name to the value the user enters.
