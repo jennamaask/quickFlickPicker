@@ -11,7 +11,7 @@ class Modal extends Component {
     super(props);
     //setting initial state
     this.state = {
-      name: '',
+      name: "",
       movies: []
     };
   }
