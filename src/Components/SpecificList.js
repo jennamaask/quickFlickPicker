@@ -67,7 +67,7 @@ class SpecificList extends Component {
               return (
 
                 <div>
-                  <Link to={`/movies/${this.state.movieId}`}>
+                  <Link to={`/movies/${movieId.id}`}>
                   <img
                     src={movieId.poster}
                     alt={`Poster of ${movieId.name}`}
