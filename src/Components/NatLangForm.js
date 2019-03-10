@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 
-
 class NatLangForm extends Component {
   constructor(props) {
     super(props);
@@ -32,6 +31,7 @@ class NatLangForm extends Component {
     if (filteredMovies.length === 0) {
       alert("Your search returned no results, try again.");
     } else {
+      //on submit, based on the user's genre and time inputs, choose a random movie from their list
       const randomMovie = filteredMovies[Math.floor(Math.random() * filteredMovies.length)]
       this.setState({
         randomMovie: randomMovie.id,
@@ -43,6 +43,7 @@ class NatLangForm extends Component {
 
 
   render() {
+    {/* once the user submits the form, and we choose a movie for them, redirect to that movie's Info page  */}
     if (this.state.toMoreInfo === true) {
       return <Redirect to={`/movies/${this.state.randomMovie}`}/>
     } 

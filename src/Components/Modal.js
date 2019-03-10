@@ -3,6 +3,11 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 import firebase from "firebase";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+
+const MySwal = withReactContent(Swal);
+
 
 library.add(faTimesCircle);
 
@@ -12,8 +17,28 @@ class Modal extends Component {
     //setting initial state
     this.state = {
       name: "",
-      movies: []
+      movies: [],
+      show: false,
     };
+  }
+  confirmAlert = () => {
+    MySwal.fire({
+      title: <p>Hello World</p>,
+      footer: "Copyright 2018",
+      onOpen: () => {
+        // `MySwal` is a subclass of `Swal`
+        //   with all the same instance & static methods
+        MySwal.clickConfirm();
+      }
+    }).then(() => {
+      return MySwal.fire({
+        position: 'top-end',
+        type: 'success',
+        title: 'List created',
+        showConfirmButton: false,
+        timer: 1500});
+    });
+  
   }
   //creating event to set state of name to the value the user enters.
   handleChange = event => {
@@ -24,7 +49,6 @@ class Modal extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    
     this.setState({
       //removing spaces from listnames to use in URL
       name: this.state.name.replace(/\s+/g, '-').toLowerCase()
@@ -35,21 +59,25 @@ class Modal extends Component {
       dbRef.once("value").then(res => {
         const response = res.val();
         let duplicate = false;
+        //error handling re: case sensitive
         for (let object in response) {
           if (
-            this.state.name.toLocaleLowerCase() ===
-            response[object].name.toLocaleLowerCase()
+            this.state.name.toLowerCase() ===
+            response[object].name.toLowerCase()
           ) {
+            //alert user if the list name already exists
             duplicate = true;
             alert(`There's already a list named that dum dum`);
           }
         }
+        //if it's not a duplicate list name, push to database
         if (duplicate === false) {
           dbRef.push(this.state);
         }
         this.setState({
-          name: ""
+          name: "",
         });
+        this.confirmAlert()
       });
     }
   };

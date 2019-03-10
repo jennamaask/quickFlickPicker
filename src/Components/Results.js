@@ -99,6 +99,7 @@ class Results extends Component {
         <button onClick={this.showModal}>Create new list</button>
         {this.state.show && <Modal handleClose={this.hideModal} />}
 
+        {/* conditional render, if user types an input that does not generate a result, give them a no results message on the page */}
         {this.state.movies.length === 0 ? (
           <p>Your search came back with no results</p>
         ) : (
