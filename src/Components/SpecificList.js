@@ -35,19 +35,19 @@ class SpecificList extends Component {
     return (
       <div>
         <h2>{this.props.match.params.listName}</h2>
-        <Link to='/'>Search More Movies</Link>
-        <Link to='/lists'>Go back to Lists</Link>
+        <Link to="/">Search More Movies</Link>
+        <Link to="/lists">Go back to Lists</Link>
         {this.state.listMovies.length === 0 ? (
           <p>Looks like nobody has added any movies to this list yet!</p>
-          ) : (
-            <div>
+        ) : (
+          <div>
             {this.state.listMovies.map(movieId => {
               return (
                 <img src={movieId.poster} alt={`Poster of ${movieId.name}`} />
-                );
-              })}
-              <NatLangForm movieInfo={this.state.listMovies}/>
-            </div>
+              );
+            })}
+            <NatLangForm movieInfo={this.state.listMovies} />
+          </div>
         )}
       </div>
     );

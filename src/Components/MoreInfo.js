@@ -1,13 +1,16 @@
 import React, { Component } from "react";
 import YouTube from "react-youtube";
 import axios from "axios";
-import {Link} from 'react-router-dom';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faChevronCircleLeft, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
+import { Link } from "react-router-dom";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faChevronCircleLeft,
+  faPlusCircle
+} from "@fortawesome/free-solid-svg-icons";
 import ChoiceModal from "./ChoiceModal.js";
 
-library.add(faChevronCircleLeft, faPlusCircle)
+library.add(faChevronCircleLeft, faPlusCircle);
 
 const apiKey = "220ba76687a248fe4b74726d993ed22f";
 
@@ -23,21 +26,21 @@ class MoreInfo extends Component {
       genres: "",
       trailer: "",
       show: false,
-      posterPath: ''
+      posterPath: ""
     };
   }
   //functions to show / hide modals
   showModal = () => {
     this.setState({
-      show: true,
-    })
-  }
+      show: true
+    });
+  };
   hideModal = () => {
     this.setState({
-      show: false,
-    })
-  }
-  
+      show: false
+    });
+  };
+
   //make call to API for specific film details of movie that the user selected
   // this.props.match.params.movieId -> when we click on the image, the movie Id goes into the URL and this grabs it from the URL and uses it for the axios call.
   componentDidMount = () => {
@@ -91,12 +94,21 @@ class MoreInfo extends Component {
   render() {
     return (
       <div className="moreInfo">
-      <div>
-      <Link to='/'>
-      <FontAwesomeIcon icon="chevron-circle-left" />
-      </Link>
-      <FontAwesomeIcon onClick={this.showModal} icon='plus-circle'/>
-          {this.state.show && (<ChoiceModal title={this.state.movie.title} poster={this.state.movie.poster_path} duration={this.state.movie.runtime} genre={this.state.genres} movieId={this.props.match.params.movieId} handleClose={this.hideModal} />) }
+        <div>
+          <Link to="/">
+            <FontAwesomeIcon icon="chevron-circle-left" />
+          </Link>
+          <FontAwesomeIcon onClick={this.showModal} icon="plus-circle" />
+          {this.state.show && (
+            <ChoiceModal
+              title={this.state.movie.title}
+              poster={this.state.movie.poster_path}
+              duration={this.state.movie.runtime}
+              genre={this.state.genres}
+              movieId={this.props.match.params.movieId}
+              handleClose={this.hideModal}
+            />
+          )}
 
           <h2>{this.state.movie.title}</h2>
           <h3>{this.state.movie.tagline}</h3>

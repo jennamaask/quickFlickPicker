@@ -3,11 +3,10 @@ import firebase from "../firebase.js";
 import Modal from "./Modal.js";
 import { BrowserRouter as Router, Link, Route } from "react-router-dom";
 
-
 class ListPage extends Component {
   constructor() {
     super();
-//setting initial state
+    //setting initial state
     this.state = {
       lists: [],
       listsName: "",
@@ -41,15 +40,13 @@ class ListPage extends Component {
       show: false
     });
   };
-  
-//on click of create new list, modal appears for user to enter list name, also this page is displaying the lists the user already has.
+
+  //on click of create new list, modal appears for user to enter list name, also this page is displaying the lists the user already has.
   render() {
     return (
       <div>
         <h2>Movie Lists</h2>
-        <Link to="/">
-          Search More Movies
-        </Link>
+        <Link to="/">Search More Movies</Link>
         <button onClick={this.showModal}>Create new list</button>
         {this.state.show && <Modal handleClose={this.hideModal} />}
         <ul>

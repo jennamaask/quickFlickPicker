@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Swal from 'sweetalert2-react';
+import Swal from "sweetalert2-react";
 
 class NatLangForm extends Component {
   constructor(props) {
@@ -26,9 +26,9 @@ class NatLangForm extends Component {
     });
     console.log(filteredMovies);
     //if filtered movies is empty, give user an error message
-    if (filteredMovies.length===0) {
-      alert("Your search returned no results, try again.")
-    };
+    if (filteredMovies.length === 0) {
+      alert("Your search returned no results, try again.");
+    }
   };
 
   render() {
@@ -78,8 +78,6 @@ class NatLangForm extends Component {
           </label>
           <input id="filterList" type="submit" value="Find me a movie" />
         </form>
-
-        
       </div>
     );
   }
