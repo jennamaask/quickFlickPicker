@@ -49,7 +49,6 @@ class Modal extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    
     this.setState({
       //removing spaces from listnames to use in URL
       name: this.state.name.replace(/\s+/g, '-').toLowerCase()
@@ -60,15 +59,18 @@ class Modal extends Component {
       dbRef.once("value").then(res => {
         const response = res.val();
         let duplicate = false;
+        //error handling re: case sensitive
         for (let object in response) {
           if (
-            this.state.name.toLocaleLowerCase() ===
-            response[object].name.toLocaleLowerCase()
+            this.state.name.toLowerCase() ===
+            response[object].name.toLowerCase()
           ) {
+            //alert user if the list name already exists
             duplicate = true;
             alert(`There's already a list named that dum dum`);
           }
         }
+        //if it's not a duplicate list name, push to database
         if (duplicate === false) {
           dbRef.push(this.state);
         }

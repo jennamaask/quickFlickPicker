@@ -32,7 +32,7 @@ class SpecificList extends Component {
       });
     });
   }
-
+  //remove movie from list 
   removeMovie = movieId => {
     const dbRef = firebase.database().ref();
     let matchedObject = "";
@@ -58,6 +58,7 @@ class SpecificList extends Component {
         <h2>{this.state.title}</h2>
         <Link to="/">Search More Movies</Link>
         <Link to="/lists">Go back to Lists</Link>
+        {/* conditional redner - return message if user selects a list where no movies have been added */}
         {this.state.listMovies.length === 0 ? (
           <p>Looks like nobody has added any movies to this list yet!</p>
         ) : (

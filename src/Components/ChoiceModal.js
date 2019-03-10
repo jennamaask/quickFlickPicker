@@ -29,7 +29,8 @@ class ChoiceModal extends Component {
       });
     });
   }
-
+  
+  //user selects list to add movie to a speicifc list. Then go through each object in database response, checking to see if list names match, once we get to the list name that is the same as the list name we clicked on, we set matched object equal to the key of the same name - and then push the movie to the specific list.
   chosenList = listName => {
     const dbRef = firebase.database().ref();
     let matchedObject = "";
@@ -46,7 +47,7 @@ class ChoiceModal extends Component {
 
     dbRef.on("value", res => {
       response = res.val();
-      //going through each object in database response, checking to see if list names match, once we get to the list name that is the same as the list name we clicked on, we go into the object to determine if it has a movie array already.
+
       for (let object in response) {
         if (response[object].name === listName) {
           matchedObject = object;
@@ -54,13 +55,13 @@ class ChoiceModal extends Component {
       }
     });
     const listRef = dbRef.child(matchedObject);
-
-    // if (response[matchedObject].movies === undefined) {
     listRef
       .child("movies")
       .child(this.props.movieId)
       .set(tempObject);
-    //ERROR HANDLING - Add an if statment so the user can't add the same move to their list multiple times - will involve our favourite array method map.
+
+    //close modal on click
+    this.props.handleClose();
   };
 
   //print user's lists to screen

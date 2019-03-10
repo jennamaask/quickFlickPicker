@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import firebase from "../firebase.js";
 import Modal from "./Modal.js";
-import { BrowserRouter as Router, Link, Route } from "react-router-dom";
+import {Link} from "react-router-dom";
+
 
 class ListPage extends Component {
   constructor() {
@@ -41,13 +42,14 @@ class ListPage extends Component {
     });
   };
 
+  //removeList from List Page
   removeList = (listName) => {
     {
       const dbRef = firebase.database().ref()
       let matchedObject = ''
       dbRef.on("value", res => {
         let response = res.val();
-        //going through each object in database response, checking to see if list names match, once we get to the list name that is the same as the list name we clicked on, we go into the object to determine if it has a movie array already.
+        //going through each object in database response, checking to see if list names match, once we get to the list name that is the same as the list name we clicked on, remove that list from the database.
         for (let object in response) {
           if (response[object].name === listName) {
             matchedObject = object;
@@ -69,7 +71,6 @@ class ListPage extends Component {
         {this.state.show && <Modal handleClose={this.hideModal} />}
         <ul>
           {this.state.lists.map((listName, i) => {
-            // REMEMBER to fix url name so there are no spaces
             return (
               <li key={i}>
                 <Link to={`/lists/${listName}`}>
@@ -82,6 +83,7 @@ class ListPage extends Component {
                 >
                   Remove List 
                 </button>
+
               </li>
             );
           })}
