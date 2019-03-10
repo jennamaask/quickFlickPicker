@@ -40,8 +40,14 @@ class Results extends Component {
           api_key: apiKey
         }
       }).then(response => {
+        let tempArray = []
+        response.data.results.map((result) => {
+          if (result.poster_path) {
+            tempArray.push(result)
+          }
+        })
         this.setState({
-          movies: response.data.results
+          movies: tempArray
         });
       });
     } else {
@@ -59,7 +65,6 @@ class Results extends Component {
 
   // user search result to do another API call and set state to those results.
   searchQueryCall = searchQuery => {
-    console.log("before axios");
     axios({
       method: "get",
       url: "https://api.themoviedb.org/3/search/movie",
@@ -71,11 +76,14 @@ class Results extends Component {
         query: searchQuery
       }
     }).then(response => {
-      console.log(response.data.results);
-      //if the user searches for something that does not generate a response from the API.
-     
+      let tempArray = []
+      response.data.results.map((result) => {
+        if(result.poster_path) {
+          tempArray.push(result)
+        }
+      })
       this.setState({
-        movies: response.data.results
+        movies:tempArray
       });
     });
   };
