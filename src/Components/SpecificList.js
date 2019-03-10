@@ -8,14 +8,15 @@ class SpecificList extends Component {
     super();
     //setting state
     this.state = {
-      listMovies: []
+      listMovies: [],
+      title: ""
     };
   }
 
   componentDidMount() {
-    let tempArray = [];
     const dbRef = firebase.database().ref();
     dbRef.on("value", res => {
+      let tempArray = [];
       const response = res.val();
       //find which object in our database matches the name of the list we have clicked on
       for (let object in response) {
@@ -26,15 +27,35 @@ class SpecificList extends Component {
         }
       }
       this.setState({
-        listMovies: tempArray
+        listMovies: tempArray,
+        title: this.props.match.params.listName.replace(/-/g, ' ')
       });
     });
   }
 
+  removeMovie = movieId => {
+    const dbRef = firebase.database().ref();
+    let matchedObject = "";
+    dbRef.on("value", res => {
+      let response = res.val();
+      //going through each object in database response, checking to see if list names match, once we get to the list name that is the same as the list name we clicked on, we go into the object to determine if it has a movie array already.
+      for (let object in response) {
+        if (response[object].name === this.props.match.params.listName) {
+          matchedObject = object;
+        }
+      }
+    });
+    const listRef = dbRef.child(matchedObject);
+    listRef
+      .child("movies")
+      .child(movieId)
+      .remove();
+  };
+
   render() {
     return (
       <div>
-        <h2>{this.props.match.params.listName}</h2>
+        <h2>{this.state.title}</h2>
         <Link to="/">Search More Movies</Link>
         <Link to="/lists">Go back to Lists</Link>
         {this.state.listMovies.length === 0 ? (
@@ -43,7 +64,19 @@ class SpecificList extends Component {
           <div>
             {this.state.listMovies.map(movieId => {
               return (
-                <img src={movieId.poster} alt={`Poster of ${movieId.name}`} />
+                <div>
+                  <img src={movieId.poster} alt={`Poster of ${movieId.name}`} />
+                  <div className="overlay">
+                    <button
+                      className="removeButton"
+                      onClick={() => {
+                        this.removeMovie(movieId.id);
+                      }}
+                    >
+                      Remove movie from list
+                    </button>
+                  </div>
+                </div>
               );
             })}
             <NatLangForm movieInfo={this.state.listMovies} />

@@ -36,10 +36,10 @@ class NatLangForm extends Component {
         randomMovie: randomMovie.id,
         toMoreInfo: true
       })
-    }
-
-    
+    } 
   };
+
+
 
   render() {
     if (this.state.toMoreInfo === true) {

@@ -41,6 +41,24 @@ class ListPage extends Component {
     });
   };
 
+  removeList = (listName) => {
+    {
+      const dbRef = firebase.database().ref()
+      let matchedObject = ''
+      dbRef.on("value", res => {
+        let response = res.val();
+        //going through each object in database response, checking to see if list names match, once we get to the list name that is the same as the list name we clicked on, we go into the object to determine if it has a movie array already.
+        for (let object in response) {
+          if (response[object].name === listName) {
+            matchedObject = object;
+          }
+        }
+      });
+      const listRef = dbRef.child(matchedObject);
+      listRef.remove()
+    }
+  }
+
   //on click of create new list, modal appears for user to enter list name, also this page is displaying the lists the user already has.
   render() {
     return (
@@ -55,8 +73,15 @@ class ListPage extends Component {
             return (
               <li key={i}>
                 <Link to={`/lists/${listName}`}>
-                  <p>{listName}</p>
+                {/* adding space back to list names displayed on list page */}
+                  <p>{listName.replace(/-/g, ' ')}</p>
                 </Link>
+                <button 
+                  className="removeList" 
+                  onClick= { () => { this.removeList(listName) }}
+                >
+                  Remove List 
+                </button>
               </li>
             );
           })}

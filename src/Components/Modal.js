@@ -24,6 +24,11 @@ class Modal extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
+    
+    this.setState({
+      //removing spaces from listnames to use in URL
+      name: this.state.name.replace(/\s+/g, '-').toLowerCase()
+    })
     //conditional, if name is not an empty string, grab data from firebase
     if (this.state.name !== "") {
       const dbRef = firebase.database().ref();
