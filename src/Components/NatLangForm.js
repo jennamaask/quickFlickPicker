@@ -1,31 +1,35 @@
 import React, { Component } from "react";
+import Swal from 'sweetalert2-react';
 
 class NatLangForm extends Component {
   constructor(props) {
     super(props);
-    this.state={
-        genre: '',
-        time:''
-    }
+    this.state = {
+      genre: "",
+      time: ""
+    };
   }
- //LEFT OFF HERE
-  handleChange = (event) => {
+  //LEFT OFF HERE
+  handleChange = event => {
     this.setState({
-        [event.target.name]: event.target.value
-    })
-  }
-//LEFT OFF HERE
-  handleSubmit = (event) =>{
-    const genreFinder = new RegExp(this.state.genre, "i")
+      [event.target.name]: event.target.value
+    });
+  };
+  //LEFT OFF HERE
+  handleSubmit = event => {
+    const genreFinder = new RegExp(this.state.genre, "i");
     event.preventDefault();
-    const filteredMovies = this.props.movieInfo.filter((movie) => {
-    return (movie.duration <= this.state.time && movie.genre.match(genreFinder))
-    
-})
-
-console.log(filteredMovies);
-
-  }
+    const filteredMovies = this.props.movieInfo.filter(movie => {
+      return (
+        movie.duration <= this.state.time && movie.genre.match(genreFinder)
+      );
+    });
+    console.log(filteredMovies);
+    //if filtered movies is empty, give user an error message
+    if (filteredMovies.length===0) {
+      return "dummy"
+    };
+  };
 
   render() {
     return (

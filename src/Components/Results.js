@@ -71,7 +71,11 @@ class Results extends Component {
         query: searchQuery
       }
     }).then(response => {
-      console.log("test", response);
+      console.log(response.data.results);
+      //if the user searches for something that does not generate a response from the API.
+      if (response.data.results.length === 0) {
+        console.log("nothing here")
+      }; 
       this.setState({
         movies: response.data.results
       });
