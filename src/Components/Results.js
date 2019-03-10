@@ -73,9 +73,7 @@ class Results extends Component {
     }).then(response => {
       console.log(response.data.results);
       //if the user searches for something that does not generate a response from the API.
-      if (response.data.results.length === 0) {
-        console.log("nothing here")
-      }; 
+     
       this.setState({
         movies: response.data.results
       });
@@ -96,19 +94,26 @@ class Results extends Component {
         </Link>
         <button onClick={this.showModal}>Create new list</button>
         {this.state.show && (<Modal handleClose={this.hideModal} />)}
-        {this.state.movies.map(movie => {
-          let url = `http://image.tmdb.org/t/p/w185//${movie.poster_path}`;
-          return (
-            <div key={movie.id}>
-              <Link to={`/movies/${movie.id}`}>
-                <img src={url} alt={`Poster of ${movie.title}`} />
-              </Link>
-            </div>
-          );
-        })}
-      </div>
-    );
+    
+              {this.state.movies.length === 0 ? (<p>Your search came back with no results</p>) :  (
+                <div>
+                {
+                  this.state.movies.map(movie => {
+                    let url = `http://image.tmdb.org/t/p/w185//${movie.poster_path}`;
+                    return (
+                      <div key={movie.id}>
+                        <Link to={`/movies/${movie.id}`}>
+                          <img src={url} alt={`Poster of ${movie.title}`} />
+                        </Link>
+                      </div>
+                    )}
+                  )
+                } 
+              </div>
+            )}
+          </div>
+        )
+    }
   }
-}
 
 export default Results;
