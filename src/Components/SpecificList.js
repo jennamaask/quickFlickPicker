@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import firebase from "firebase";
 import { Link } from "react-router-dom";
-import NatLangForm from './NatLangForm.js'
+import NatLangForm from "./NatLangForm.js";
 
 class SpecificList extends Component {
   constructor() {
