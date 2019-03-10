@@ -54,10 +54,13 @@ class ChoiceModal extends Component {
       }
     });
     const listRef = dbRef.child(matchedObject);
-    
+
     // if (response[matchedObject].movies === undefined) {
-      listRef.child("movies").child(this.props.movieId).set(tempObject);
-      //ERROR HANDLING - Add an if statment so the user can't add the same move to their list multiple times - will involve our favourite array method map.
+    listRef
+      .child("movies")
+      .child(this.props.movieId)
+      .set(tempObject);
+    //ERROR HANDLING - Add an if statment so the user can't add the same move to their list multiple times - will involve our favourite array method map.
   };
 
   //print user's lists to screen
