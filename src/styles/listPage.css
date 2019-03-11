@@ -1,1 +1,60 @@
 @import "./global.css";
+
+.listPage {
+    height: 88vh;
+   
+}
+
+h2 {
+    color: var(--colour2);
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+    font-size: 1rem;
+    display: block;
+    text-align: center;
+    line-height: calc(1 * 1.6);
+}
+
+li {
+    margin: 0 auto;
+}
+
+li p {
+    float: left;
+    margin: 0;
+    font-size: 1.5rem;
+    position: relative;
+    left:50%;   
+}
+
+.svg-inline--fa {
+    font-size: 1rem;
+    margin: 10px 10px;
+    float: left;
+    position: relative;
+    left: -50%;
+}
+
+li .listName {
+    text-align: center;
+}
+
+button {
+    border-radius: 10px;
+    padding: 15px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 25px;
+    margin: 0;
+}
+.removeList {
+    color: var(--colour2)
+}
+
+
+

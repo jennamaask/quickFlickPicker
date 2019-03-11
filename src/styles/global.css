@@ -1,7 +1,7 @@
 :root {
-  --colour1: black;
-  --colour2: #840a00; 
-  --colour3: #e6e0d0 ;
+  --colour1:#221f1f;
+  --colour2: #e50914; 
+  --colour3: #e6e0d0;
   --colour4: #f8f166;
 
   --headingFont: 'Playfair Display', serif;
@@ -18,7 +18,7 @@ html {
 }
 
 body {
-    background-color: var(--colour2);
+    background-color: var(--colour1);
     font-family: var(--bodyFont);
 }
 

@@ -144,18 +144,19 @@ class Modal extends Component {
   //user enters list name on change call handle change
   render() {
     return (
-      <div>
+      <div className="modalWrapper">
         <FontAwesomeIcon icon="times-circle" onClick={this.props.handleClose} />
         <form onSubmit={this.handleSubmit}>
-          <label htmlFor="text">Enter List Name</label>
+          <label htmlFor="text" class="visuallyHidden">Enter List Name</label>
           <input
             onChange={this.handleChange}
             value={this.state.name}
             type="text"
             id="text"
             name="name"
+            placeholder="List Name"
           />
-          <label htmlFor="submit">Create List</label>
+          <label htmlFor="submit" class="visuallyHidden">Create List</label>
           <input type="submit" id="submit" value="Create list" />
         </form>
       </div>
