@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import '../styles/filterBar.css';
 
 class FilterBar extends Component {
   constructor(props) {

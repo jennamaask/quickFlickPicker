@@ -5,6 +5,7 @@ import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 import firebase from "firebase";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
+import "../styles/modal.css";
 
 const MySwal = withReactContent(Swal);
 
@@ -21,6 +22,8 @@ class Modal extends Component {
       show: false,
     };
   }
+
+  // Sweet alert to confirm list has been successfully created
   confirmAlert = () => {
     MySwal.fire({
       title: <p>Hello World</p>,
@@ -36,7 +39,60 @@ class Modal extends Component {
         type: 'success',
         title: 'List created',
         showConfirmButton: false,
-        timer: 1500});
+        timer: 1500,
+        width: '25rem',
+        toast: true
+      
+      });
+    });
+  
+  }
+
+  // Sweet alert for when a duplicate list is entered
+  duplicateAlert = () => {
+    MySwal.fire({
+      title: <p>Hello World</p>,
+      footer: "Copyright 2018",
+      onOpen: () => {
+        // `MySwal` is a subclass of `Swal`
+        //   with all the same instance & static methods
+        MySwal.clickConfirm();
+      }
+    }).then(() => {
+      return MySwal.fire({
+        position: 'top-end',
+        type: 'error',
+        title: 'Duplicate list name',
+        showConfirmButton: false,
+        timer: 1500,
+        width: '25rem'
+      
+      });
+    });
+  
+  }
+
+  // Sweet alert for when an unnamed list is entered
+  emptyListNameAlert = () => {
+    MySwal.fire({
+      title: <p>Hello World</p>,
+      footer: "Copyright 2018",
+      onOpen: () => {
+        // `MySwal` is a subclass of `Swal`
+        //   with all the same instance & static methods
+        MySwal.clickConfirm();
+      }
+    }).then(() => {
+      return MySwal.fire({
+        position: 'top-end',
+        type: 'error',
+        title: 'Please enter list name',
+        showConfirmButton: false,
+        timer: 1500,
+        width: '25rem',
+
+      
+      });
     });
   
   }
@@ -67,18 +123,20 @@ class Modal extends Component {
           ) {
             //alert user if the list name already exists
             duplicate = true;
-            alert(`There's already a list named that dum dum`);
+            this.duplicateAlert();
           }
         }
         //if it's not a duplicate list name, push to database
         if (duplicate === false) {
           dbRef.push(this.state);
+          this.confirmAlert()
         }
         this.setState({
           name: "",
         });
-        this.confirmAlert()
       });
+    } else {
+      this.emptyListNameAlert()
     }
   };
 
