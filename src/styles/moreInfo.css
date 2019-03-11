@@ -1,1 +1,16 @@
 @import "./global.css";
+
+h2 {
+    color: var(--colour3);
+    font-family: var(--headingFont);
+    font-size: 2rem;
+}
+
+h3 {
+    color: var(--colour3);
+    font-size: 1.5rem;
+}
+
+a {
+    color: var(--colour3);
+}
