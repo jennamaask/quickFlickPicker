@@ -1,6 +1,13 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
+<<<<<<< HEAD
 import "../styles/natLangForm.css";
+=======
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+
+const MySwal = withReactContent(Swal);
+>>>>>>> da897c64d11a94a257d2bef6fa7ad5c8e5390cda
 
 class NatLangForm extends Component {
   constructor(props) {
@@ -30,7 +37,7 @@ class NatLangForm extends Component {
     console.log(filteredMovies);
     //if filtered movies is empty, give user an error message
     if (filteredMovies.length === 0) {
-      alert("Your search returned no results, try again.");
+      this.noResultsAlert()
     } else {
       //on submit, based on the user's genre and time inputs, choose a random movie from their list
       const randomMovie = filteredMovies[Math.floor(Math.random() * filteredMovies.length)]
@@ -40,6 +47,29 @@ class NatLangForm extends Component {
       })
     } 
   };
+
+  // Sweet alert for when an unnamed list is entered
+  noResultsAlert = () => {
+    MySwal.fire({
+      title: <p>Hello World</p>,
+      footer: "Copyright 2018",
+      onOpen: () => {
+        // `MySwal` is a subclass of `Swal`
+        //   with all the same instance & static methods
+        MySwal.clickConfirm();
+      }
+    }).then(() => {
+      return MySwal.fire({
+        position: 'center',
+        type: 'error',
+        title: 'No results',
+        width: '25rem',
+
+
+      });
+    });
+
+  }
 
 
 

@@ -40,7 +40,8 @@ class Modal extends Component {
         title: 'List created',
         showConfirmButton: false,
         timer: 1500,
-        width: '25rem'
+        width: '25rem',
+        toast: true
       
       });
     });
