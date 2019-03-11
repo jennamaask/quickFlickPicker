@@ -1,8 +1,8 @@
 @import "./global.css";
 
-.listPage {
-    height: 88vh;
-   
+.listPageWrapper {
+    height: 90vh;
+    margin: 0 5%;
 }
 
 h2 {
@@ -18,24 +18,37 @@ a {
     line-height: calc(1 * 1.6);
 }
 
-li {
-    margin: 0 auto;
+
+a:hover,
+li p:hover {
+    color: var(--colour4)
+}
+
+ul {
+    list-style-type: none;
+    padding: 25px;
+    margin: 0;
+} 
+    
+/* li {
+    text-align: center;
+} */
+
+.listName a {
+    display: inline-block;
 }
 
 li p {
-    float: left;
     margin: 0;
     font-size: 1.5rem;
-    position: relative;
-    left:50%;   
+    display: inline-block; 
 }
 
 .svg-inline--fa {
+    display: inline-block;
     font-size: 1rem;
-    margin: 10px 10px;
-    float: left;
-    position: relative;
-    left: -50%;
+    margin: 15px 10px 0 10px;
+     color: var(--colour2)
 }
 
 li .listName {
@@ -45,15 +58,6 @@ li .listName {
 button {
     border-radius: 10px;
     padding: 15px;
-}
-
-ul {
-    list-style-type: none;
-    padding: 25px;
-    margin: 0;
-}
-.removeList {
-    color: var(--colour2)
 }
 
 

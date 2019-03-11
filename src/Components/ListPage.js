@@ -73,29 +73,30 @@ class ListPage extends Component {
   //on click of create new list, modal appears for user to enter list name, also this page is displaying the lists the user already has.
   render() {
     return (
-      <div className="listPage">
+      <div className="listPage listPageWrapper">
         <h2>Movie Lists</h2>
+        <p className="instructions">Welcome to the movie lists page! Select a list below to view movies in each list and search through them and we'll pick your flick. Alternatively, create your own list and add all of the movies you'd like!</p>
         <Link to="/results">Search More Movies</Link>
         <label htmlFor="createNewList" class="visuallyHidden"> Create New List</label>  
         <a id="createNewList" onClick={this.showModal}>Create new list</a>
         {this.state.show && <Modal handleClose={this.hideModal} />}
-        <ul>
+        <ul className="">
           {this.state.lists.map((listName, i) => {
             return (
               <li key={i} className="listName clearfix">
                 <Link to={`/lists/${listName}`}>
                   {/* adding space back to list names displayed on list page */}
-                  <p>{listName.replace(/-/g, " ")}</p>
+                  <p className="child">{listName.replace(/-/g, " ")}</p>
                 </Link>
 
                 <FontAwesomeIcon
-                  className="removeList"
+                  className="removeList child"
                   icon="times-circle"
                   onClick={()=> {
                     this.removeList(listName);
                   }}
                 />
-                
+
                 
               </li>
             );

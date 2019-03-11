@@ -13,6 +13,12 @@
     margin: 5px 0 ;
 }
 
+[type="text"]:focus-within,
+[type="submit"]:focus-within {
+    background-color: var(--colour1);
+    color: var(--colour4)
+}
+
 
 [type="text"] {
     text-align: center;
@@ -20,6 +26,13 @@
 [type="text"]::placeholder {
     text-align: center;
 }
-[type="submit"] {
+
+
+[type="submit"]:hover {
+    background-color: var(--colour4)
     
+}
+
+.modalClose {
+    float: right;
 }

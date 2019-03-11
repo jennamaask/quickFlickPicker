@@ -51,8 +51,6 @@ class Modal extends Component {
   // Sweet alert for when a duplicate list is entered
   duplicateAlert = () => {
     MySwal.fire({
-      title: <p>Hello World</p>,
-      footer: "Copyright 2018",
       onOpen: () => {
         // `MySwal` is a subclass of `Swal`
         //   with all the same instance & static methods
@@ -75,8 +73,6 @@ class Modal extends Component {
   // Sweet alert for when an unnamed list is entered
   emptyListNameAlert = () => {
     MySwal.fire({
-      title: <p>Hello World</p>,
-      footer: "Copyright 2018",
       onOpen: () => {
         // `MySwal` is a subclass of `Swal`
         //   with all the same instance & static methods
@@ -144,8 +140,9 @@ class Modal extends Component {
   //user enters list name on change call handle change
   render() {
     return (
-      <div className="modalWrapper">
-        <FontAwesomeIcon icon="times-circle" onClick={this.props.handleClose} />
+      <div className="modalWrapper clearfix">
+        <FontAwesomeIcon 
+        className="modalClose" icon="times-circle" onClick={this.props.handleClose} />
         <form onSubmit={this.handleSubmit}>
           <label htmlFor="text" class="visuallyHidden">Enter List Name</label>
           <input
