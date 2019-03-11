@@ -1,28 +1,22 @@
 :root {
-  --colour1: black;
-  --colour2: #840a00; 
-  --colour3: #e6e0d0 ;
+  --colour1: #221f1f;
+  --colour2: #e50914;
+  --colour3: #e6e0d0;
   --colour4: #f8f166;
 
   --headingFont: 'Playfair Display', serif;
-  --bodyFont: 'Roboto', sans-serif; 
+  --bodyFont: 'Roboto', sans-serif;
 }
 
-html {
-    font-size: 125%;
-    /*
-   62.5% = units of 10px
-   93.7% = units of 15px
-   125% = units of 20px
-    */
-}
+
 
 body {
-    background-color: var(--colour2);
-    font-family: var(--bodyFont);
+  background-color: #ffffff;
+  font-family: var(--bodyFont);
+  color: var(--colour3);
+  background-color: var(--colour1);
 }
 
-p {
-    color: var(--colour3);
-    font-size: 1rem;
-}
+
+
+

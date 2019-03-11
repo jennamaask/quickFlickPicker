@@ -1,16 +1,102 @@
-@import "./global.css";
+@import './global.css';
+
+html {
+  font-size: 82%;
+  /*
+   62.5% = units of 10px
+   93.7% = units of 15px
+   125% = units of 20px
+    */
+}
 
 h2 {
-    color: var(--colour3);
-    font-family: var(--headingFont);
-    font-size: 2rem;
+  font-family: var(--headingFont);
+  color: var(--colour2);
+  font-size: 2.3rem;
 }
 
 h3 {
-    color: var(--colour3);
-    font-size: 1.5rem;
+  font-size: 1.7rem;
 }
 
-a {
-    color: var(--colour3);
+h2,
+h3 {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+p {
+  font-size: 1.2rem;
+  line-height: 2rem;
+  margin-bottom: 30px;
+}
+
+p > span {
+  color: var(--colour2);
+}
+
+.wrapper {
+  width: 80%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.moreInfo {
+  margin: 60px auto;
+}
+
+.moreInfoIcons .fa-w-16 {
+  font-size: 2rem;
+  width: 50%;
+  float: left;
+  margin-bottom: 50px;
+}
+
+.moreInfoIcons .fa-w-16:hover {
+  color: var(--colour2);
+  transform: scale(1.1);
+}
+
+.youTubeContainer {
+  margin: 0 auto 50px;
+  width: 100%;
+}
+
+/**** screen meets or exceeds 768px ****/
+
+@media (min-width: 768px) {
+  html {
+    font-size: 93.6%;
+  }
+  .youTubeContainer,
+  .infoWrap {
+    width: 85%;
+  }
+  .infoWrap {
+    margin: 0 auto;
+  }
+}
+
+/**** screen meets or exceeds 992px****/
+
+@media (min-width: 992px) {
+  html {
+    font-size: 125%;
+  }
+  .wrapper {
+    width: 60%;
+  }
+  .youTubeContainer,
+  .infoWrap {
+    width: 70%;
+  }
+}
+
+/**** screen meets or exceeds 1400px ****/
+
+@media (min-width: 1400px) {
+  .youTubeContainer,
+  .infoWrap {
+    width: 70%;
+  }
 }
