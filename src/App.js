@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Link, Route } from "react-router-dom";
 import "./App.css";
-import Header from "./Components/Header.js";
 import Results from "./Components/Results.js";
 import MoreInfo from "./Components/MoreInfo.js";
 import ListPage from "./Components/ListPage.js";
 import SpecificList from "./Components/SpecificList";
+import Footer from './Components/Footer';
+import Header from './Components/Header.js';
 
 class App extends Component {
   constructor(props) {
@@ -28,9 +29,10 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <Header />
-          <Route
-            path="/"
+    
+        <Route path="/" exact component={Header} />
+        <Route
+            path="/results"
             exact
             render={() => {
               return (
@@ -44,6 +46,7 @@ class App extends Component {
           <Route path="/movies/:movieId" component={MoreInfo} />
           <Route path="/lists" exact component={ListPage} />
           <Route path="/lists/:listName" component={SpecificList} />
+          <Footer />
         </div>
       </Router>
     );
