@@ -1,13 +1,6 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
-<<<<<<< HEAD
 import "../styles/natLangForm.css";
-=======
-import Swal from "sweetalert2";
-import withReactContent from "sweetalert2-react-content";
-
-const MySwal = withReactContent(Swal);
->>>>>>> da897c64d11a94a257d2bef6fa7ad5c8e5390cda
 
 class NatLangForm extends Component {
   constructor(props) {
