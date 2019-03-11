@@ -1,1 +1,28 @@
 @import "./global.css";
+
+.results .wrapper {
+    width: 95%;
+    margin: 0 auto;
+}
+
+.result {
+    width: 50%;
+    float: left;
+}
+
+.result img {
+    width: 100%;
+    object-fit: cover;
+}
+
+@media (min-width: 700px) {
+    .result {
+        width: 33%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .result {
+        width: 25%;
+    }
+}
