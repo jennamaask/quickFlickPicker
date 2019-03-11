@@ -3,6 +3,10 @@ import firebase from "../firebase.js";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimesCircle, faDivide } from "@fortawesome/free-solid-svg-icons";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+
+const MySwal = withReactContent(Swal);
 
 library.add(faTimesCircle);
 
@@ -61,8 +65,30 @@ class ChoiceModal extends Component {
       .set(tempObject);
 
     //close modal on click
+    this.confirmAlert();
     this.props.handleClose();
   };
+
+  confirmAlert = () => {
+    MySwal.fire({
+      title: <p>Hello World</p>,
+      footer: "Copyright 2018",
+      onOpen: () => {
+        // `MySwal` is a subclass of `Swal`
+        //   with all the same instance & static methods
+        MySwal.clickConfirm();
+      }
+    }).then(() => {
+      return MySwal.fire({
+        position: 'top-end',
+        type: 'success',
+        title: 'Movie added',
+        showConfirmButton: false,
+        timer: 1500,
+        width: '25rem',
+      });
+    });
+  }
 
   //print user's lists to screen
   //icon to close modal
