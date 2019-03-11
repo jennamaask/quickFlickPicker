@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import firebase from "firebase";
 import { Link } from "react-router-dom";
 import NatLangForm from "./NatLangForm.js";
+import "../styles/specificList.css";
 
 class SpecificList extends Component {
   constructor() {
@@ -56,7 +57,7 @@ class SpecificList extends Component {
     return (
       <div>
         <h2>{this.state.title}</h2>
-        <Link to="/">Search More Movies</Link>
+        <Link to="/results">Search More Movies</Link>
         <Link to="/lists">Go back to Lists</Link>
         {/* conditional redner - return message if user selects a list where no movies have been added */}
         {this.state.listMovies.length === 0 ? (

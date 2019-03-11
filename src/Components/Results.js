@@ -3,6 +3,7 @@ import axios from "axios";
 import FilterBar from "./FilterBar.js";
 import { Link } from "react-router-dom";
 import Modal from "./Modal.js";
+import "../styles/results.css";
 
 const apiKey = "220ba76687a248fe4b74726d993ed22f";
 

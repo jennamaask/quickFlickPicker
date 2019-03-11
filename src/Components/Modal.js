@@ -5,6 +5,7 @@ import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 import firebase from "firebase";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
+import "../styles/modal.css";
 
 const MySwal = withReactContent(Swal);
 

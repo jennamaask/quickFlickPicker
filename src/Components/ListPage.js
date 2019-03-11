@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import firebase from "../firebase.js";
 import Modal from "./Modal.js";
 import {Link} from "react-router-dom";
+import '../styles/listPage.css';
 
 
 class ListPage extends Component {
@@ -66,7 +67,7 @@ class ListPage extends Component {
     return (
       <div>
         <h2>Movie Lists</h2>
-        <Link to="/">Search More Movies</Link>
+        <Link to="/results">Search More Movies</Link>
         <button onClick={this.showModal}>Create new list</button>
         {this.state.show && <Modal handleClose={this.hideModal} />}
         <ul>

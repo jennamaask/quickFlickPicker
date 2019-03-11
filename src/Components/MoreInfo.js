@@ -9,6 +9,7 @@ import {
   faPlusCircle
 } from "@fortawesome/free-solid-svg-icons";
 import ChoiceModal from "./ChoiceModal.js";
+import "../styles/moreInfo.css";
 
 library.add(faChevronCircleLeft, faPlusCircle);
 
