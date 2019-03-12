@@ -54,7 +54,7 @@ class Results extends Component {
     this.updateImageSize()
 
     // TODO: Fix event listener so images resize on page resize
-    window.addEventListener('resize', this.updateImageSize())
+    window.addEventListener("resize", this.updateImageSize.bind(this));
     
     
 
