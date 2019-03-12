@@ -76,16 +76,11 @@ class ListPage extends Component {
       <div className="listPage listPageWrapper">
         <h2>Movie Lists</h2>
         <p className="instructions">
-          Welcome to the movie lists page! Select a list below to view
-          movies in each list. Please add movies to an existing list, or you
-          can create your own list and add your favourite flicks.{" "}
+          Welcome to the movie lists page! Select an existing list below to view
+          movies. Help the Quick Flicks community by adding movies to an existing list, or creating your own list to  add all of your favourite flicks.{" "}
         </p>
-        <Link to="/results">Search More Movies</Link>
-        <label htmlFor="createNewList" class="visuallyHidden">
-          {" "}
-          Create New List
-        </label>
-        <a id="createNewList" onClick={this.showModal}>
+        <Link to="/results" className="link">Search More Movies</Link>
+        <a className="link" onClick={this.showModal}>
           Create new list
         </a>
         {this.state.show && <Modal handleClose={this.hideModal} />}

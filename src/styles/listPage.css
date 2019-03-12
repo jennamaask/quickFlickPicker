@@ -63,7 +63,6 @@ li p::before {
 }
 
 
-
 .listName a {
     display: inline-block;
 }
@@ -88,6 +87,29 @@ ul {
 }
 .svg-inline--fa:hover{
      cursor: pointer
+}
+
+/* underline animation adapted from Animated Underline Hover CodePen https://codepen.io/jstn/pen/zuDst/ */
+.link {
+    position: relative;
+}
+
+.link:after {    
+  background: none repeat scroll 0 0 transparent;
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 2px;
+  left: 50%;
+  position: absolute;
+  background: var(--colour3);
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  width: 0;
+}
+
+.link:hover:after { 
+  width: 100%; 
+  left: 0; 
 }
 
 /* media query styling begins here */
