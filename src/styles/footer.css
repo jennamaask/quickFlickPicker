@@ -1,1 +1,9 @@
 @import "./global.css";
+
+footer {
+    text-align: center; 
+}
+
+footer p {
+    font-size: .8rem;
+}

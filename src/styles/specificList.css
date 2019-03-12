@@ -1,1 +1,210 @@
-@import "./global.css";
+@import "./global.css"; 
+
+/* things i need help with.. making hamburger menu accesible,
+also hamburger menu is ugly
+ugly hover buttons on poster,
+should we keep the hamburger bar all the way or change into a nav
+ */
+.overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: rgb(248,241,102,.5);
+    opacity: 0;
+    transition: opacity .5s;
+}
+
+.specificList path {
+    fill: var(--colour3);
+}
+
+.specificList svg.fa-bars {
+    float: right;
+    margin: 38px 15px;
+    cursor: pointer;
+}
+
+.specificList nav .svg-inline--fa.fa-w-16 {
+   width: 100%;
+   margin-bottom: 20px;
+}
+
+ nav.dropDown {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: rgba(34,31,31,1);
+    padding: 50px;
+}
+
+
+ nav.dropDown a {
+    text-decoration: none;
+    background: var(--colour2);
+    border-radius: 20px;
+    color: var(--colour1);
+    display: inline-block;
+    margin: 20px 0;
+    text-align: center;
+    width: 100%;
+    padding: 5px;
+}
+
+.bigNav {
+    display: none;
+}
+
+.specificList {
+    position: relative;
+}
+
+.specificList .overlay:hover {
+    opacity: 1;
+}
+
+.specificList .overlay a {
+    background: var(--colour2);
+    border-radius: 20px;
+    color: var(--colour1);
+    text-decoration: none;
+    width: 80%;
+    margin: 40% 10% 20px;
+    display: inline-block;
+    text-align: center;
+    padding: 5px;
+}
+
+.specificList .overlay button {
+    background: var(--colour2);
+    border:none;
+    color: var(--colour1);
+    margin: 20px 5%;
+    border-radius: 20px;
+    width: 90%;
+    padding: 5px;
+}
+
+.specificList .poster {
+    position: relative;
+    width: 50%;
+    float: left;
+}
+
+.specificList .poster img {
+    width: 100%;
+    display: block;
+}
+
+.specificList p {
+    color: var(--colour2);
+    font-size: 1rem;
+}
+
+.specificList .wrapper{
+    width: 90%;
+    margin: 0 auto;
+}
+
+.specificList form {
+    color: var(--colour3);
+    padding: 10px 0px;
+    border-radius: 20px;
+    clear: both;
+}
+
+.specificList select {
+    border: none;
+    background: url(../assets/downArrow.svg);
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    background-repeat: no-repeat;
+    background-size: 15px;
+    background-position: 95% 85%;
+    border-bottom: 1px solid var(--colour2);
+    color: var(--colour2);
+    padding: 5px 0;
+    margin: 0 10px;
+    cursor: pointer;
+
+}
+
+.specificList h2 {
+    color: var(--colour2);
+    margin: 0;
+    padding: 20px 0 20px;
+    font-size: 2rem;
+    float: left;
+    width: 80%;
+}
+
+.specificList .movieList {
+    padding-top: 20px;
+}
+
+.specificList input[type="submit"] {
+    background: var(--colour3);
+    border: none;
+    border-radius: 20px;
+    color: var(--colour1);
+    margin: 20px 0;
+    padding: 5px 20px;
+    transition: background .3s, color .3s;
+}
+
+.specificList input[type="submit"]:hover {
+    background: var(--colour2);
+    /* border: 1px solid var(--colour2); */
+    color: var(--colour1);
+}
+
+@media(min-width:560px) {
+    .specificList h2 {
+        font-size: 4rem; 
+    }
+    .specificList svg.fa-bars {
+        margin: 70px 15px;
+    }  
+}
+@media(min-width: 800px) {
+    .specificList .poster {
+        width: 33.33%;
+    }
+}
+@media(min-width: 1000px) {
+    .specificList .poster{
+        width: 25%;
+    }
+
+    .dropDown {
+        display: none;
+    }
+
+    .bigNav {
+        display: block;
+        width: 30%;
+        float: right;
+    }
+
+    .specificList h2 {
+        width: 70%;
+        padding-bottom: 30px;
+    }
+
+    .bigNav a {
+        float: right;
+        margin: 85px 5px 0;
+        text-decoration: none;
+        color: var(--colour2);
+        border-bottom: 1px solid var(--colour2);
+        padding-bottom: 5px;
+    }
+    .specificList svg.fa-bars  {
+        display: none;
+    }
+}
+
