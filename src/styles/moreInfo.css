@@ -1,8 +1,8 @@
 @import './global.css';
-
+/* 
 html {
   font-size: 82%;
-}
+} */
 
 body {
   font-family: var(--bodyFont);
@@ -68,9 +68,9 @@ p > span {
 }
 
 @media (min-width: 768px) {
-  html {
+  /* html {
     font-size: 93.6%;
-  }
+  } */
   .youTubeContainer,
   .infoWrap {
     width: 85%;
@@ -81,9 +81,7 @@ p > span {
 }
 
 @media (min-width: 992px) {
-  html {
-    font-size: 125%;
-  }
+  
   .wrapper {
     width: 60%;
   }

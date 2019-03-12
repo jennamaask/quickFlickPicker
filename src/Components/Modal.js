@@ -144,8 +144,8 @@ class Modal extends Component {
             icon="times-circle"
             onClick={this.props.handleClose}
           />
-          <form onSubmit={this.handleSubmit}>
-            <label htmlFor="text" class="visuallyHidden">
+          <form className="modalForm" onSubmit={this.handleSubmit}>
+            <label htmlFor="text" className="visuallyHidden">
               Enter List Name
             </label>
             <input

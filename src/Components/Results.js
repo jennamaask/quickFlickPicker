@@ -153,17 +153,19 @@ class Results extends Component {
       <div>
 
         <div id="results" className="results">
-          <FilterBar onFilterSubmit={this.props.onFilterSubmit} />
-          <h1>Quick Flick Picker</h1>
-          <Link to="/lists">Go to Lists</Link>
-          <button onClick={this.showModal}>Create new list</button>
-          {this.state.show && <Modal handleClose={this.hideModal} />}
-
+          <div className="wrapper">
+            <div className="clearfix">
+            <h1>Quick Flick Picker</h1>
+            <Link to="/lists" className="buttonStyle">Go to Lists</Link>
+            </div>
+            <FilterBar onFilterSubmit={this.props.onFilterSubmit} />
+            {this.state.show && <Modal handleClose={this.hideModal} />}
+          </div>
           {/* conditional render, if user types an input that does not generate a result, give them a no results message on the page */}
           {this.state.movies.length === 0 ? (
             <p>Your search came back with no results</p>
           ) : (
-            <div className='resultsContainer wrapper clearfix'>
+            <div className='resultsContainer clearfix'>
               {this.state.movies.map(movie => {
                 let url = `http://image.tmdb.org/t/p/w${this.state.imageSize}//${
                   movie.poster_path

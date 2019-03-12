@@ -75,14 +75,14 @@ class ListPage extends Component {
     return (
       <div className="listPage listPageWrapper">
         <h2>Movie Lists</h2>
+        <Link to="/results" className="buttonStyle">Search Movies</Link>
+        <a className="buttonStyle" onClick={this.showModal}>
+          Create new list
+        </a>
         <p className="instructions">
           Welcome to the movie lists page! Select an existing list below to view
           movies. Help the Quick Flicks community by adding movies to an existing list, or creating your own list to  add all of your favourite flicks.{" "}
         </p>
-        <Link to="/results" className="link">Search More Movies</Link>
-        <a className="link" onClick={this.showModal}>
-          Create new list
-        </a>
         {this.state.show && <Modal handleClose={this.hideModal} />}
         <h3>Existing Lists:</h3>
         <ul className="">
@@ -91,7 +91,7 @@ class ListPage extends Component {
               <li key={i} className="listName clearfix">
                 <Link to={`/lists/${listName}`}>
                   {/* adding space back to list names displayed on list page */}
-                  <p className="child">{listName.replace(/-/g, " ")}</p>
+                  {listName.replace(/-/g, " ")}
                 </Link>
 
                 <FontAwesomeIcon
