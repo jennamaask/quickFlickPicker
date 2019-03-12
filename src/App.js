@@ -46,7 +46,7 @@ class App extends Component {
           <Route path="/movies/:movieId" component={MoreInfo} />
           <Route path="/lists" exact component={ListPage} />
           <Route path="/lists/:listName" component={SpecificList} />
-          <Footer />
+          {/* <Footer /> */}
         </div>
       </Router>
     );
