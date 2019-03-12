@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import YouTube from 'react-youtube';
 import axios from 'axios';
+import Footer from './Footer.js';
 import { Link } from 'react-router-dom';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -107,8 +108,14 @@ class MoreInfo extends Component {
       <div className='moreInfo'>
         <div className='wrapper'>
           <div className='moreInfoIcons clearfix'>
-            <FontAwesomeIcon onClick={this.goBack} icon='chevron-circle-left' />
-            <FontAwesomeIcon onClick={this.showModal} icon='plus-circle' />
+            <h2>{this.state.movie.title}</h2>
+            <h3>{this.state.movie.tagline}</h3>
+            <button className='buttonStyle' onClick={this.goBack}>
+              Go back
+            </button>
+            <button className='buttonStyle' onClick={this.showModal}>
+              Add to list
+            </button>
             {this.state.show && (
               <ChoiceModal
                 title={this.state.movie.title}
@@ -119,9 +126,6 @@ class MoreInfo extends Component {
                 handleClose={this.hideModal}
               />
             )}
-
-            <h2>{this.state.movie.title}</h2>
-            <h3>{this.state.movie.tagline}</h3>
           </div>
           <div>
             <YouTube
@@ -150,6 +154,7 @@ class MoreInfo extends Component {
             </p>
           </div>
         </div>
+        <Footer />
       </div>
     );
   }

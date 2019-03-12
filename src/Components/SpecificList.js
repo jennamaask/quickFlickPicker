@@ -1,16 +1,9 @@
-import React, { Component } from "react";
-import firebase from "firebase";
-import { Link } from "react-router-dom";
-import NatLangForm from "./NatLangForm.js";
-import "../styles/specificList.css";
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faBars,
-  faTimesCircle
-} from "@fortawesome/free-solid-svg-icons";
-
-library.add(faBars, faTimesCircle);
+import React, { Component } from 'react';
+import firebase from 'firebase';
+import { Link } from 'react-router-dom';
+import NatLangForm from './NatLangForm.js';
+import Footer from './Footer.js';
+import '../styles/specificList.css';
 
 class SpecificList extends Component {
   constructor() {
@@ -18,14 +11,16 @@ class SpecificList extends Component {
     //setting state
     this.state = {
       listMovies: [],
-      title: "",
-      showMenu: false
+      title: '',
+      imageSize: 0
     };
   }
 
   componentDidMount() {
+    this.updateImageSize();
+    window.addEventListener('resize', this.updateImageSize.bind(this));
     const dbRef = firebase.database().ref();
-    dbRef.on("value", res => {
+    dbRef.on('value', res => {
       let tempArray = [];
       const response = res.val();
       //find which object in our database matches the name of the list we have clicked on
@@ -42,11 +37,24 @@ class SpecificList extends Component {
       });
     });
   }
-  //remove movie from list 
+
+  updateImageSize = () => {
+    let imageSize = '342';
+    if (window.innerWidth > 1600) {
+      imageSize = '780';
+    } else if (window.innerWidth > 1000) {
+      imageSize = '500';
+    }
+
+    this.setState({
+      imageSize: imageSize
+    });
+  };
+  //remove movie from list
   removeMovie = movieId => {
     const dbRef = firebase.database().ref();
-    let matchedObject = "";
-    dbRef.on("value", res => {
+    let matchedObject = '';
+    dbRef.on('value', res => {
       let response = res.val();
       //going through each object in database response, checking to see if list names match, once we get to the list name that is the same as the list name we clicked on, we go into the object to determine if it has a movie array already.
       for (let object in response) {
@@ -57,77 +65,72 @@ class SpecificList extends Component {
     });
     const listRef = dbRef.child(matchedObject);
     listRef
-      .child("movies")
+      .child('movies')
       .child(movieId)
       .remove();
   };
 
   openMenu = () => {
-    this.setState ({
+    this.setState({
       showMenu: true
-    })
-  }
+    });
+  };
 
   closeMenu = () => {
-    this.setState ({
+    this.setState({
       showMenu: false
-    })
-  }
+    });
+  };
 
   render() {
     return (
-      <div className="specificList">
-        <div className="wrapper clearfix">
+      <div className='specificList'>
+        <div className='wrapper clearfix'>
           <h2>{this.state.title}</h2>
-          <nav className="bigNav">
-            <Link to="/results">Search Movies</Link>
-            <Link to="/lists">Lists</Link>
+          <nav className='bigNav clearfix'>
+            <Link className='buttonStyle' to='/results'>
+              Search Movies
+            </Link>
+            <Link className='buttonStyle' to='/lists'>
+              Lists
+            </Link>
           </nav>
-          <FontAwesomeIcon onClick={this.openMenu} icon="bars" size="lg" />
-          {this.state.showMenu &&(
-            <nav className="dropDown">
-              <FontAwesomeIcon onClick={this.closeMenu} icon="times-circle" />
-              <Link to="/results">Search More Movies</Link>
-              <Link to="/lists">Go back to Lists</Link>
-            </nav>
-          )}
+        </div>
+        {this.state.listMovies.length === 0 ? (
+          <div className='wrapper'>
+            <p className='empty'>
+              Looks like nobody has added any movies to this list yet!
+            </p>
           </div>
-          {/* conditional redner - return message if user selects a list where no movies have been added */}
-          {this.state.listMovies.length === 0 ? (
-            <div className="wrapper"> 
-              <p className="empty">Looks like nobody has added any movies to this list yet!</p>
-            </div>
-          ) : (
-            <div className="movieList clearfix">
-            <div className="wrapper">
+        ) : (
+          <div className='movieList clearfix'>
+            <div className='wrapper'>
               <NatLangForm movieInfo={this.state.listMovies} />
             </div>
-              {this.state.listMovies.map(movieId => {
-                return (
-                  <div className="poster">
-                    <img
-                      src={movieId.poster}
-                      alt={`Poster of ${movieId.name}`}
-                    />
-                    <div className="overlay">
-                      <Link to={`/movies/${movieId.id}`}>More Info</Link>
-                      <button
-                        className="removeButton"
-                        onClick={() => {
-                          this.removeMovie(movieId.id);
-                        }}
-                      >
-                        Remove movie from list
-                      </button>
-                    </div>
+            {this.state.listMovies.map(movieId => {
+              let url = `http://image.tmdb.org/t/p/w${this.state.imageSize}//${
+                movieId.poster
+              }`;
+              return (
+                <div className='poster'>
+                  <img src={url} alt={`Poster of ${movieId.name}`} />
+                  <div className='overlay'>
+                    <Link to={`/movies/${movieId.id}`}>More Info</Link>
+                    <button
+                      className='removeButton'
+                      onClick={() => {
+                        this.removeMovie(movieId.id);
+                      }}
+                    >
+                      Remove movie from list
+                    </button>
                   </div>
-                );
-              })}
-              <div className="wrapper">
-              </div>
-            </div>
-          )}
-      
+                </div>
+              );
+            })}
+          </div>
+        )}
+        <Footer />
       </div>
     );
   }

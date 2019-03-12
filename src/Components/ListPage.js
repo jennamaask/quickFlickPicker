@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import firebase from '../firebase.js';
 import Modal from './Modal.js';
+import Footer from './Footer';
 import { Link } from 'react-router-dom';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -69,47 +70,49 @@ class ListPage extends Component {
   //on click of create new list, modal appears for user to enter list name, also this page is displaying the lists the user already has.
   render() {
     return (
-      <div className='listPageWrapper'>
-        <h2>Movie Lists</h2>
-        <div className='listNavButtonWrap clearfix'>
-          <Link to='/results' className='buttonStyle'>
-            Search Movies
-          </Link>
-          <a className='buttonStyle' onClick={this.showModal}>
-            Create new list
-          </a>
-        </div>
-        <p className='instructions'>
-          Welcome to the movie lists page! Select an existing list below to view
-          movies. Help the Quick Flicks community by adding movies to an
-          existing list, or creating your own list to add all of your favourite
-          flicks.{' '}
-        </p>
-        {this.state.show && <Modal handleClose={this.hideModal} />}
-        <h3>Existing Lists:</h3>
-        <ul>
-          {this.state.lists.map((listName, i) => {
-            return (
-              <li key={i} className='listNames clearfix'>
-                <Link
-                  className='buttonStyle'
-                  to={`/lists/${listName}`}
-                >
-                  {/* adding space back to list names displayed on list page */}
-                  {listName.replace(/-/g, ' ')}
-                </Link>
+      <div>
+        <div className='listPageWrapper'>
+          <div className='listPageHeaderWrap clearfix'>
+            <h2>Movie Lists</h2>
+            <div className='listNavButtonWrap clearfix'>
+              <Link to='/results' className='buttonStyle'>
+                Search Movies
+              </Link>
+              <a className='buttonStyle' onClick={this.showModal}>
+                Create new list
+              </a>
+            </div>
+          </div>
+          <p className='instructions'>
+            Welcome to the movie lists page! Select an existing list below to
+            view movies. Help the Quick Flicks community by adding movies to an
+            existing list, or creating your own list to add all of your favorite
+            flicks.{' '}
+          </p>
+          {this.state.show && <Modal handleClose={this.hideModal} />}
+          <h3>Existing Lists:</h3>
+          <ul>
+            {this.state.lists.map((listName, i) => {
+              return (
+                <li key={i} className='listNames clearfix'>
+                  <Link className='buttonStyle' to={`/lists/${listName}`}>
+                    {/* adding space back to list names displayed on list page */}
+                    {listName.replace(/-/g, ' ')}
+                  </Link>
 
-                <FontAwesomeIcon
-                  className='removeList child'
-                  icon='times-circle'
-                  onClick={() => {
-                    this.removeList(listName);
-                  }}
-                />
-              </li>
-            );
-          })}
-        </ul>
+                  <FontAwesomeIcon
+                    className='removeList child'
+                    icon='times-circle'
+                    onClick={() => {
+                      this.removeList(listName);
+                    }}
+                  />
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+        <Footer />
       </div>
     );
   }

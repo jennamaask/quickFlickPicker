@@ -1,5 +1,5 @@
 @import './global.css';
-/* 
+/*
 html {
   font-size: 82%;
 } */
@@ -13,11 +13,11 @@ body {
 h2 {
   font-family: var(--headingFont);
   color: var(--colour2);
-  font-size: 2.3rem;
+  font-size: 2.25rem;
 }
 
 h3 {
-  font-size: 1.7rem;
+  font-size: 1.5rem;
 }
 
 h2,
@@ -27,8 +27,6 @@ h3 {
 }
 
 p {
-  font-size: 1.2rem;
-  line-height: 2rem;
   margin-bottom: 30px;
 }
 
@@ -46,15 +44,16 @@ p > span {
   margin: 60px auto;
 }
 
-.moreInfoIcons .fa-chevron-circle-left,
-.moreInfoIcons .fa-plus-circle {
-  width: 50%;
-  float: left;
-  margin-bottom: 50px;
+.moreInfoIcons {
+  margin-bottom: 30px;
+}
+  .moreInfoIcons .buttonStyle {
+  background: var(--colour1);
+  width: 100%;
 }
 
-.moreInfoIcons .fa-w-16 {
-  font-size: 2rem;
+.moreInfoIcons .buttonStyle:hover {
+  background: var(--colour2);
 }
 
 .moreInfoIcons .fa-w-16:hover {
@@ -67,10 +66,18 @@ p > span {
   width: 100%;
 }
 
+@media (min-width: 480px) {
+  .moreInfoIcons .buttonStyle {
+  background: var(--colour1);
+  width: calc(50% - 10px);
+}
+
+.moreInfoIcons .buttonStyle:nth-of-type(1) {
+  margin-right: 20px;
+}
+}
+
 @media (min-width: 768px) {
-  /* html {
-    font-size: 93.6%;
-  } */
   .youTubeContainer,
   .infoWrap {
     width: 85%;
@@ -81,7 +88,6 @@ p > span {
 }
 
 @media (min-width: 992px) {
-  
   .wrapper {
     width: 60%;
   }

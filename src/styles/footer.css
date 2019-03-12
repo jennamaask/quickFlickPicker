@@ -1,9 +1,10 @@
-@import "./global.css";
+@import './global.css';
 
 footer {
-    text-align: center; 
+  text-align: center;
 }
 
 footer p {
-    font-size: .8rem;
+  color: var(--colour3);
+  font-size: 0.8rem;
 }

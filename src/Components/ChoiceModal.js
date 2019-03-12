@@ -45,7 +45,7 @@ class ChoiceModal extends Component {
     tempObject = {
       id: this.props.movieId,
       name: this.props.title,
-      poster: `http://image.tmdb.org/t/p/w185//${this.props.poster}`,
+      poster: this.props.poster,
       duration: this.props.duration,
       genre: this.props.genre
     };
@@ -104,7 +104,10 @@ class ChoiceModal extends Component {
               onClick={this.props.handleClose}
             />
           </div>
-          <h3>Choose a list to add {this.props.title}</h3>
+          <h3>
+            Where do you want to add
+            <span className='modalTitle'> {this.props.title}</span>?
+          </h3>
           <ul>
             {this.state.lists.map(list => {
               return (
@@ -113,7 +116,7 @@ class ChoiceModal extends Component {
                     this.chosenList(list);
                   }}
                 >
-                  {list}
+                  {list.replace(/-/g, ' ')}
                 </li>
               );
             })}

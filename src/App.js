@@ -29,7 +29,7 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-    
+
         <Route path="/" exact component={Header} />
         <Route
             path="/results"
@@ -46,7 +46,6 @@ class App extends Component {
           <Route path="/movies/:movieId" component={MoreInfo} />
           <Route path="/lists" exact component={ListPage} />
           <Route path="/lists/:listName" component={SpecificList} />
-          {/* <Footer /> */}
         </div>
       </Router>
     );

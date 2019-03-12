@@ -5,6 +5,10 @@
     float: left;
 }
 
+.results {
+    min-height: 87vh;
+}
+
 .results h1 {
     color: var(--colour2);
     font-family: var(--headingFont)

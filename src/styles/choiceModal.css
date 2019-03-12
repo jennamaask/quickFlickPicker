@@ -49,6 +49,10 @@
   color: var(--colour2);
 }
 
+.modalTitle {
+  color: var(--colour2)
+}
+
 @media (min-width: 480px) {
   .mojal {
     width: 70%;

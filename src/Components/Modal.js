@@ -1,14 +1,13 @@
-import React, { Component } from "react";
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
-import firebase from "firebase";
-import Swal from "sweetalert2";
-import withReactContent from "sweetalert2-react-content";
-import "../styles/modal.css";
+import React, { Component } from 'react';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+import firebase from 'firebase';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
+import '../styles/modal.css';
 
 const MySwal = withReactContent(Swal);
-
 
 library.add(faTimesCircle);
 
@@ -17,8 +16,8 @@ class Modal extends Component {
     super(props);
     //setting initial state
     this.state = {
-      name: "",
-      movies: [],
+      name: '',
+      movies: []
     };
   }
 
@@ -39,11 +38,9 @@ class Modal extends Component {
         timer: 1500,
         width: '25rem',
         toast: true
-      
       });
     });
-  
-  }
+  };
 
   // Sweet alert for when a duplicate list is entered
   duplicateAlert = () => {
@@ -61,11 +58,9 @@ class Modal extends Component {
         showConfirmButton: false,
         timer: 1500,
         width: '25rem'
-      
       });
     });
-  
-  }
+  };
 
   // Sweet alert for when an unnamed list is entered
   emptyListNameAlert = () => {
@@ -82,13 +77,10 @@ class Modal extends Component {
         title: 'Please enter list name',
         showConfirmButton: false,
         timer: 1500,
-        width: '25rem',
-
-      
+        width: '25rem'
       });
     });
-  
-  }
+  };
   //creating event to set state of name to the value the user enters.
   handleChange = event => {
     this.setState({
@@ -101,11 +93,11 @@ class Modal extends Component {
     this.setState({
       //removing spaces from listnames to use in URL
       name: this.state.name.replace(/\s+/g, '-').toLowerCase()
-    })
+    });
     //conditional, if name is not an empty string, grab data from firebase
-    if (this.state.name !== "") {
+    if (this.state.name !== '') {
       const dbRef = firebase.database().ref();
-      dbRef.once("value").then(res => {
+      dbRef.once('value').then(res => {
         const response = res.val();
         let duplicate = false;
         //error handling re: case sensitive
@@ -122,14 +114,14 @@ class Modal extends Component {
         //if it's not a duplicate list name, push to database
         if (duplicate === false) {
           dbRef.push(this.state);
-          this.confirmAlert()
+          this.confirmAlert();
         }
         this.setState({
-          name: "",
+          name: ''
         });
       });
     } else {
-      this.emptyListNameAlert()
+      this.emptyListNameAlert();
     }
   };
 
@@ -137,30 +129,32 @@ class Modal extends Component {
   //user enters list name on change call handle change
   render() {
     return (
-      <div className="modalWrapper clearfix">
-        <div className="content">
-          <FontAwesomeIcon
-            className="modalClose"
-            icon="times-circle"
-            onClick={this.props.handleClose}
-          />
-          <form className="modalForm" onSubmit={this.handleSubmit}>
-            <label htmlFor="text" className="visuallyHidden">
-              Enter List Name
-            </label>
-            <input
-              onChange={this.handleChange}
-              value={this.state.name}
-              type="text"
-              id="text"
-              name="name"
-              placeholder="Enter new list name"
+      <div className='clearfix'>
+        <div className='mask'>
+          <div className='mojal'>
+            <FontAwesomeIcon
+              className='modalClose'
+              icon='times-circle'
+              onClick={this.props.handleClose}
             />
-            <label htmlFor="submit" class="visuallyHidden">
-              Create List
-            </label>
-            <input type="submit" id="submit" value="Create list" />
-          </form>
+            <form className='' onSubmit={this.handleSubmit}>
+              <label htmlFor='text' className='visuallyHidden'>
+                Enter List Name
+              </label>
+              <input
+                onChange={this.handleChange}
+                value={this.state.name}
+                type='text'
+                id='text'
+                name='name'
+                placeholder='Enter new list name'
+              />
+              <label htmlFor='submit' className='visuallyHidden'>
+                Create List
+              </label>
+              <input className='buttonStyle' type='submit' id='submit' value='Create list' />
+            </form>
+          </div>
         </div>
       </div>
     );
