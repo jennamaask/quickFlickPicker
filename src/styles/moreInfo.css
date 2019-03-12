@@ -2,11 +2,12 @@
 
 html {
   font-size: 82%;
-  /*
-   62.5% = units of 10px
-   93.7% = units of 15px
-   125% = units of 20px
-    */
+}
+
+body {
+  font-family: var(--bodyFont);
+  color: var(--colour3);
+  background-color: var(--colour1);
 }
 
 h2 {
@@ -45,11 +46,15 @@ p > span {
   margin: 60px auto;
 }
 
-.moreInfoIcons .fa-w-16 {
-  font-size: 2rem;
+.moreInfoIcons .fa-chevron-circle-left,
+.moreInfoIcons .fa-plus-circle {
   width: 50%;
   float: left;
   margin-bottom: 50px;
+}
+
+.moreInfoIcons .fa-w-16 {
+  font-size: 2rem;
 }
 
 .moreInfoIcons .fa-w-16:hover {

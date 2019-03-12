@@ -7,16 +7,3 @@
   --headingFont: 'Playfair Display', serif;
   --bodyFont: 'Roboto', sans-serif;
 }
-
-
-
-body {
-  background-color: #ffffff;
-  font-family: var(--bodyFont);
-  color: var(--colour3);
-  background-color: var(--colour1);
-}
-
-
-
-

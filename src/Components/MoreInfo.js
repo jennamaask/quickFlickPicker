@@ -14,8 +14,9 @@ import '../styles/moreInfo.css';
 library.add(faChevronCircleLeft, faPlusCircle);
 
 const apiKey = '220ba76687a248fe4b74726d993ed22f';
+
 const opts = {
-  height: "350",
+  height: '350',
   width: '100%'
 };
 
@@ -106,10 +107,7 @@ class MoreInfo extends Component {
       <div className='moreInfo'>
         <div className='wrapper'>
           <div className='moreInfoIcons clearfix'>
-            <FontAwesomeIcon
-              onClick={this.goBack}
-              icon='chevron-circle-left'
-            />
+            <FontAwesomeIcon onClick={this.goBack} icon='chevron-circle-left' />
             <FontAwesomeIcon onClick={this.showModal} icon='plus-circle' />
             {this.state.show && (
               <ChoiceModal
