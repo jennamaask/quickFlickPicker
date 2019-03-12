@@ -1,1 +1,140 @@
 @import "./global.css";
+
+.listPageWrapper {
+    height: 90vh;
+    margin: 0 10%;
+}
+
+h2 {
+    color: var(--colour2);
+    text-align: center;
+    letter-spacing: 2px;
+    font-size: 2.25rem;
+}
+
+h3 {
+  color: var(--colour2);
+  font-family: var(--headingFont);
+  margin: 0;
+  padding: 20px 0;
+  font-size: 1.5rem;
+  line-height: 1.25rem;
+  letter-spacing: 2px;
+} 
+
+p {
+    color: var(--colour3);
+    font-size: 1rem;
+    line-height: 1.25rem;
+    letter-spacing: 1.25px;
+}
+
+/* instruction text styling */
+.listPage p {
+    /* line-height: 1.6rem;
+    letter-spacing: 1.25px; */
+    transition: color .6s ease-in-out;
+}
+
+/* links to movies & specific lists pages styling */
+a {
+    color: var(--colour3);
+    text-decoration: none;
+    font-size: 1rem;
+    display: block;
+    text-align: center;
+    line-height: calc(1 * 1.6);
+    cursor: pointer;
+    transition: color .6s ease-in-out;
+}
+
+/* movie list text styling */
+
+li {
+    padding: 15px 0;
+    color: var(--colour3);
+}
+li p {
+    margin: 0;
+    /* font-size: 1rem; */
+    display: inline-block; 
+}
+
+li p::before {
+    content: '🎬';
+    padding-right: 15px;
+}
+
+
+.listName a {
+    display: inline-block;
+}
+
+a:hover,
+li p:hover {
+    color: var(--colour4)
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+} 
+
+.svg-inline--fa {
+    display: inline-block;
+    font-size: .8rem;
+    margin: 15px 10px 0 10px;
+    color: var(--colour3);
+    transition: color .6s ease-in-out;
+    
+}
+.svg-inline--fa:hover{
+     cursor: pointer;
+     color: var(--colour2);
+}
+
+/* underline animation adapted from Animated Underline Hover CodePen https://codepen.io/jstn/pen/zuDst/ */
+.link {
+    position: relative;
+}
+
+.link:after {    
+  background: none repeat scroll 0 0 transparent;
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 2px;
+  left: 50%;
+  position: absolute;
+  background: var(--colour3);
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  width: 0;
+}
+
+.link:hover:after { 
+  width: 100%; 
+  left: 0; 
+}
+
+/* media query styling begins here */
+@media (min-width: 480px) {
+    html {
+        font-size: 150%;
+    }
+}
+
+@media (min-width: 600px) {
+   html {
+        font-size: 175%;
+  }
+}
+
+@media (min-width: 900px) {
+   html {
+        font-size: 200%;
+  }
+}
+
+
+

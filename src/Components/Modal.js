@@ -19,15 +19,12 @@ class Modal extends Component {
     this.state = {
       name: "",
       movies: [],
-      show: false,
     };
   }
 
   // Sweet alert to confirm list has been successfully created
   confirmAlert = () => {
     MySwal.fire({
-      title: <p>Hello World</p>,
-      footer: "Copyright 2018",
       onOpen: () => {
         // `MySwal` is a subclass of `Swal`
         //   with all the same instance & static methods
@@ -51,8 +48,6 @@ class Modal extends Component {
   // Sweet alert for when a duplicate list is entered
   duplicateAlert = () => {
     MySwal.fire({
-      title: <p>Hello World</p>,
-      footer: "Copyright 2018",
       onOpen: () => {
         // `MySwal` is a subclass of `Swal`
         //   with all the same instance & static methods
@@ -75,8 +70,6 @@ class Modal extends Component {
   // Sweet alert for when an unnamed list is entered
   emptyListNameAlert = () => {
     MySwal.fire({
-      title: <p>Hello World</p>,
-      footer: "Copyright 2018",
       onOpen: () => {
         // `MySwal` is a subclass of `Swal`
         //   with all the same instance & static methods
@@ -144,20 +137,31 @@ class Modal extends Component {
   //user enters list name on change call handle change
   render() {
     return (
-      <div>
-        <FontAwesomeIcon icon="times-circle" onClick={this.props.handleClose} />
-        <form onSubmit={this.handleSubmit}>
-          <label htmlFor="text">Enter List Name</label>
-          <input
-            onChange={this.handleChange}
-            value={this.state.name}
-            type="text"
-            id="text"
-            name="name"
+      <div className="modalWrapper clearfix">
+        <div className="content">
+          <FontAwesomeIcon
+            className="modalClose"
+            icon="times-circle"
+            onClick={this.props.handleClose}
           />
-          <label htmlFor="submit">Create List</label>
-          <input type="submit" id="submit" value="Create list" />
-        </form>
+          <form onSubmit={this.handleSubmit}>
+            <label htmlFor="text" class="visuallyHidden">
+              Enter List Name
+            </label>
+            <input
+              onChange={this.handleChange}
+              value={this.state.name}
+              type="text"
+              id="text"
+              name="name"
+              placeholder="Enter new list name"
+            />
+            <label htmlFor="submit" class="visuallyHidden">
+              Create List
+            </label>
+            <input type="submit" id="submit" value="Create list" />
+          </form>
+        </div>
       </div>
     );
   }
