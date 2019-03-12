@@ -15,7 +15,8 @@ class Results extends Component {
     this.state = {
       //setting initial state
       movies: [],
-      show: false
+      show: false,
+      imageSize: 0,
     };
   }
 
@@ -30,10 +31,33 @@ class Results extends Component {
       show: false
     });
   };
+
+  updateImageSize = () => {
+    let imageSize = '185';
+    if (window.innerWidth > 1600) {
+      imageSize = '780';
+    } else if (window.innerWidth > 1000) {
+      imageSize = '500';
+    } else if (window.innerWidth > 500) {
+      imageSize = '342';
+    }
+
+    this.setState({
+      imageSize: imageSize
+    })
+
+  }
   // call to API to start with trending movies on page load
   // if the props is empty, that means the user has not searched anything yet, if they haven't searched anything yet, the trending movies will populate the screen.
   //else, if the props is the user's search input, axios will pull up their search results
   componentDidMount() {
+    this.updateImageSize()
+
+    // TODO: Fix event listener so images resize on page resize
+    window.addEventListener('resize', this.updateImageSize())
+    
+    
+
     if (this.props.userSearchResult === "") {
       axios({
         method: "get",
@@ -141,7 +165,7 @@ class Results extends Component {
           ) : (
             <div className='resultsContainer wrapper clearfix'>
               {this.state.movies.map(movie => {
-                let url = `http://image.tmdb.org/t/p/w342//${
+                let url = `http://image.tmdb.org/t/p/w${this.state.imageSize}//${
                   movie.poster_path
                 }`;
                 return (
