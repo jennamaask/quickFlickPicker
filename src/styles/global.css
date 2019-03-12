@@ -1,18 +1,17 @@
 :root {
   --colour1: #221f1f;
-  --colour2: #e50914; 
-  --colour3: #e6e0d0 ;
+  --colour2: #e50914;
+  --colour3: #e6e0d0;
   --colour4: #f8f166;
 
   --headingFont: 'Playfair Display', serif;
   --headingFontWeight: 700;
   --bodyFont: 'Roboto', sans-serif;
-
 }
 
 html {
-    font-size: 125%;
-    /*
+  font-size: 125%;
+  /*
    62.5% = units of 10px
    93.7% = units of 15px
    125% = units of 20px
@@ -20,20 +19,32 @@ html {
 }
 
 body {
-    background-color: var(--colour1);
-    font-family: var(--bodyFont);
+  background-color: var(--colour1);
+  font-family: var(--bodyFont);
 }
 
 p {
-    color: var(--colour3);
-    font-size: 1rem;
+  color: var(--colour3);
+  font-size: 1rem;
 }
 
 img {
-    display: block;
+  display: block;
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
+.buttonStyle {
+  border: 1px solid var(--colour2);
+  color: var(--colour2);
+  padding: 3px 40px;
+  border-radius: 20px;
+  margin: 25px 0;
+}
+
+.buttonStyle:hover {
+  background-color: var(--colour2);
+  color: var(--colour1);
+}

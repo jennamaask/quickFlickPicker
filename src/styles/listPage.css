@@ -1,19 +1,19 @@
-@import "./global.css";
+@import './global.css';
 
 .listPageWrapper {
-    height: 90vh;
-    margin: 0 10%;
+  width: 80%;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 h2 {
-    color: var(--colour2);
-    text-align: center;
-    letter-spacing: 2px;
-    font-size: 2.25rem;
-    
+  color: var(--colour2);
+  text-align: center;
+  letter-spacing: 2px;
+  font-size: 2.25rem;
 }
 
-.listPage h3 {
+.listPageWrapper h3 {
   color: var(--colour2);
   font-family: var(--headingFont);
   margin: 0;
@@ -21,87 +21,97 @@ h2 {
   font-size: 1.5rem;
   line-height: 1.25rem;
   letter-spacing: 2px;
-} 
-
-.listPage .instructions {
-    color: var(--colour3);
-    font-size: 1rem;
-    line-height: 1.25rem;
-    letter-spacing: 1.25px;
-    margin-top: 70px;
 }
 
+.listPageWrapper .instructions {
+  color: var(--colour3);
+  font-size: 1rem;
+  line-height: 1.25rem;
+  letter-spacing: 1.25px;
+  margin-top: 70px;
+  clear: both;
+}
 
 /* links to movies & specific lists pages styling */
-.listPage a {
-    color: var(--colour3);
-    text-decoration: none;
-    font-size: 1rem;
-    display: block;
-    text-align: center;
-    line-height: calc(1 * 1.6);
-    cursor: pointer;
-    ;
+.listPageWrapper a {
+  text-decoration: none;
+  font-size: 1rem;
+  display: block;
+  text-align: center;
+  line-height: calc(1 * 1.6);
+  cursor: pointer;
 }
 
 /* movie list text styling */
 
-.listPage li {
-    padding: 0;
-    color: var(--colour3);
-}
 li p {
-    margin: 0;
-    /* font-size: 1rem; */
-    display: inline-block; 
+  margin: 0;
+  /* font-size: 1rem; */
+  display: inline-block;
 }
 
 li p::before {
-    content: '🎬';
-    padding-right: 15px;
+  content: '🎬';
+  padding-right: 15px;
 }
 
-
-.listName a {
-    display: inline-block;
-}
-
-a:hover,
-li p:hover {
-    color: var(--colour4)
+.listNames a {
+  display: inline-block;
+  font-size: 1.8rem;
+  padding: 20px;
+  width: 100%;
 }
 
 ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-} 
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
 
 .svg-inline--fa {
-    display: inline-block;
-    font-size: .8rem;
-    margin: 15px 10px 0 10px;
-    color: var(--colour3);
-    transition: color .6s ease-in-out;
-    
+  display: inline-block;
+  font-size: 0.8rem;
+  margin: 15px 10px 0 10px;
+  color: var(--colour3);
+  transition: color 0.6s ease-in-out;
 }
-.svg-inline--fa:hover{
-     cursor: pointer;
-     color: var(--colour2);
+.svg-inline--fa:hover {
+  cursor: pointer;
 }
 
-
-.listPage .buttonStyle {
-    border: 1px solid var(--colour2);
-    color: var(--colour2);
-    padding: 3px 40px;
-    border-radius: 20px;
-    margin: 25px 0;
+.listNames {
+      position: relative;
 }
-.listPage .buttonStyle:hover {
-    background-color: var(--colour2);
-    color: var(--colour1);
 
+.listNames .buttonStyle {
+  background-color: var(--colour2);
+  color: var(--colour3);
+  min-height: 100px;
+  border-radius: 5px;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.listNames .fa-times-circle {
+  position: absolute;
+  top: 20px;
+  right: 0;
+  font-size: 1rem;
+}
+
+@media (min-width: 789px) {
+    .listNavButtonWrap {
+       width: 100%;
+        margin: 0 auto;
+    }
+  .listNavButtonWrap .buttonStyle {
+    width: calc(50% - 10px);
+    float: left;
+  }
+
+  .listNavButtonWrap .buttonStyle:nth-of-type(1) {
+      margin-right: 20px;
+  }
 }
 
 /* media query styling begins here */
@@ -122,6 +132,3 @@ ul {
         font-size: 200%;
   }
 } */
-
-
-
