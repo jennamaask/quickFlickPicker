@@ -17,7 +17,7 @@ should we keep the hamburger bar all the way or change into a nav
 }
 
 .specificList path {
-    fill: var(--colour2);
+    fill: var(--colour3);
 }
 
 .specificList svg.fa-bars {
@@ -31,7 +31,7 @@ should we keep the hamburger bar all the way or change into a nav
    margin-bottom: 20px;
 }
 
-.specificList nav {
+ nav.dropDown {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -41,7 +41,8 @@ should we keep the hamburger bar all the way or change into a nav
     padding: 50px;
 }
 
-.specificList nav a {
+
+ nav.dropDown a {
     text-decoration: none;
     background: var(--colour2);
     border-radius: 20px;
@@ -51,6 +52,10 @@ should we keep the hamburger bar all the way or change into a nav
     text-align: center;
     width: 100%;
     padding: 5px;
+}
+
+.bigNav {
+    display: none;
 }
 
 .specificList {
@@ -97,7 +102,6 @@ should we keep the hamburger bar all the way or change into a nav
 .specificList p {
     color: var(--colour2);
     font-size: 1rem;
-    border-bottom: 1px solid var(--colour2);
 }
 
 .specificList .wrapper{
@@ -106,7 +110,7 @@ should we keep the hamburger bar all the way or change into a nav
 }
 
 .specificList form {
-    color: var(--colour2);
+    color: var(--colour3);
     padding: 10px 0px;
     border-radius: 20px;
     clear: both;
@@ -138,19 +142,12 @@ should we keep the hamburger bar all the way or change into a nav
     width: 80%;
 }
 
-/* .specificList a {
-    text-decoration: none;
-    color: var(--colour2);
-    display: inline-block;
-    padding: 10px 0;
-} */
-
 .specificList .movieList {
     padding-top: 20px;
 }
 
 .specificList input[type="submit"] {
-    background: var(--colour2);
+    background: var(--colour3);
     border: none;
     border-radius: 20px;
     color: var(--colour1);
@@ -160,10 +157,9 @@ should we keep the hamburger bar all the way or change into a nav
 }
 
 .specificList input[type="submit"]:hover {
-    background: var(--colour1);
-    border: 1px solid var(--colour2);
-    padding: 4px 19px;
-    color: var(--colour2);
+    background: var(--colour2);
+    /* border: 1px solid var(--colour2); */
+    color: var(--colour1);
 }
 
 @media(min-width:560px) {
@@ -182,6 +178,33 @@ should we keep the hamburger bar all the way or change into a nav
 @media(min-width: 1000px) {
     .specificList .poster{
         width: 25%;
+    }
+
+    .dropDown {
+        display: none;
+    }
+
+    .bigNav {
+        display: block;
+        width: 30%;
+        float: right;
+    }
+
+    .specificList h2 {
+        width: 70%;
+        padding-bottom: 30px;
+    }
+
+    .bigNav a {
+        float: right;
+        margin: 85px 5px 0;
+        text-decoration: none;
+        color: var(--colour2);
+        border-bottom: 1px solid var(--colour2);
+        padding-bottom: 5px;
+    }
+    .specificList svg.fa-bars  {
+        display: none;
     }
 }
 

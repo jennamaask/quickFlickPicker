@@ -79,21 +79,29 @@ class SpecificList extends Component {
       <div className="specificList">
         <div className="wrapper clearfix">
           <h2>{this.state.title}</h2>
+          <nav className="bigNav">
+            <Link to="/results">Search Movies</Link>
+            <Link to="/lists">Lists</Link>
+          </nav>
           <FontAwesomeIcon onClick={this.openMenu} icon="bars" size="lg" />
           {this.state.showMenu &&(
-            <nav>
+            <nav className="dropDown">
               <FontAwesomeIcon onClick={this.closeMenu} icon="times-circle" />
               <Link to="/results">Search More Movies</Link>
               <Link to="/lists">Go back to Lists</Link>
             </nav>
           )}
-          <NatLangForm movieInfo={this.state.listMovies} />
           </div>
           {/* conditional redner - return message if user selects a list where no movies have been added */}
           {this.state.listMovies.length === 0 ? (
-            <p>Looks like nobody has added any movies to this list yet!</p>
+            <div className="wrapper"> 
+              <p className="empty">Looks like nobody has added any movies to this list yet!</p>
+            </div>
           ) : (
             <div className="movieList clearfix">
+            <div className="wrapper">
+              <NatLangForm movieInfo={this.state.listMovies} />
+            </div>
               {this.state.listMovies.map(movieId => {
                 return (
                   <div className="poster">
