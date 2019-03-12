@@ -1,13 +1,13 @@
 @import "./global.css";
 
-.results .wrapper {
-    width: 95%;
-    margin: 0 auto;
-}
-
 .result {
     width: 50%;
     float: left;
+}
+
+.results h1 {
+    color: var(--colour2);
+    font-family: var(--headingFont)
 }
 
 .result img {
