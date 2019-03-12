@@ -75,11 +75,21 @@ class ListPage extends Component {
     return (
       <div className="listPage listPageWrapper">
         <h2>Movie Lists</h2>
-        <p className="instructions">Welcome to the movie lists page! Select a list below to view movies in each list and search through them and we'll pick your flick. Alternatively, create your own list and add all of the movies you'd like!</p>
+        <p className="instructions">
+          Welcome to the movie lists page! Select a list below to view
+          movies in each list. Please add movies to an existing list, or you
+          can create your own list and add your favourite flicks.{" "}
+        </p>
         <Link to="/results">Search More Movies</Link>
-        <label htmlFor="createNewList" class="visuallyHidden"> Create New List</label>  
-        <a id="createNewList" onClick={this.showModal}>Create new list</a>
+        <label htmlFor="createNewList" class="visuallyHidden">
+          {" "}
+          Create New List
+        </label>
+        <a id="createNewList" onClick={this.showModal}>
+          Create new list
+        </a>
         {this.state.show && <Modal handleClose={this.hideModal} />}
+        <h3>Existing Lists:</h3>
         <ul className="">
           {this.state.lists.map((listName, i) => {
             return (
@@ -92,12 +102,10 @@ class ListPage extends Component {
                 <FontAwesomeIcon
                   className="removeList child"
                   icon="times-circle"
-                  onClick={()=> {
+                  onClick={() => {
                     this.removeList(listName);
                   }}
                 />
-
-                
               </li>
             );
           })}

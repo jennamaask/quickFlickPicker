@@ -26,8 +26,6 @@ class Modal extends Component {
   // Sweet alert to confirm list has been successfully created
   confirmAlert = () => {
     MySwal.fire({
-      title: <p>Hello World</p>,
-      footer: "Copyright 2018",
       onOpen: () => {
         // `MySwal` is a subclass of `Swal`
         //   with all the same instance & static methods
@@ -141,21 +139,30 @@ class Modal extends Component {
   render() {
     return (
       <div className="modalWrapper clearfix">
-        <FontAwesomeIcon 
-        className="modalClose" icon="times-circle" onClick={this.props.handleClose} />
-        <form onSubmit={this.handleSubmit}>
-          <label htmlFor="text" class="visuallyHidden">Enter List Name</label>
-          <input
-            onChange={this.handleChange}
-            value={this.state.name}
-            type="text"
-            id="text"
-            name="name"
-            placeholder="List Name"
+        <div className="content">
+          <FontAwesomeIcon
+            className="modalClose"
+            icon="times-circle"
+            onClick={this.props.handleClose}
           />
-          <label htmlFor="submit" class="visuallyHidden">Create List</label>
-          <input type="submit" id="submit" value="Create list" />
-        </form>
+          <form onSubmit={this.handleSubmit}>
+            <label htmlFor="text" class="visuallyHidden">
+              Enter List Name
+            </label>
+            <input
+              onChange={this.handleChange}
+              value={this.state.name}
+              type="text"
+              id="text"
+              name="name"
+              placeholder="Enter new list name"
+            />
+            <label htmlFor="submit" class="visuallyHidden">
+              Create List
+            </label>
+            <input type="submit" id="submit" value="Create list" />
+          </form>
+        </div>
       </div>
     );
   }

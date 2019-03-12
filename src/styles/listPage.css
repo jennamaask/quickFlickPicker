@@ -2,22 +2,71 @@
 
 .listPageWrapper {
     height: 90vh;
-    margin: 0 5%;
+    margin: 0 10%;
 }
 
 h2 {
     color: var(--colour2);
     text-align: center;
+    letter-spacing: 2px;
+    font-size: 2.25rem;
 }
 
+h3 {
+  color: var(--colour2);
+  font-family: var(--headingFont);
+  margin: 0;
+  padding: 20px 0;
+  font-size: 1.5rem;
+  line-height: 1.25rem;
+  letter-spacing: 2px;
+} 
+
+p {
+    font-size: 1rem;
+    line-height: 1.25rem;
+    letter-spacing: 1.25px;
+}
+
+/* instruction text styling */
+.listPage p {
+    /* line-height: 1.6rem;
+    letter-spacing: 1.25px; */
+    transition: color .6s ease-in-out;
+}
+
+/* links to movies & specific lists pages styling */
 a {
     text-decoration: none;
     font-size: 1rem;
     display: block;
     text-align: center;
     line-height: calc(1 * 1.6);
+    cursor: pointer;
+    transition: color .6s ease-in-out;
 }
 
+/* movie list text styling */
+
+li {
+    padding: 15px 0;
+}
+li p {
+    margin: 0;
+    /* font-size: 1rem; */
+    display: inline-block; 
+}
+
+li p::before {
+    content: '🎬';
+    padding-right: 15px;
+}
+
+
+
+.listName a {
+    display: inline-block;
+}
 
 a:hover,
 li p:hover {
@@ -26,38 +75,38 @@ li p:hover {
 
 ul {
     list-style-type: none;
-    padding: 25px;
     margin: 0;
+    padding: 0;
 } 
-    
-/* li {
-    text-align: center;
-} */
-
-.listName a {
-    display: inline-block;
-}
-
-li p {
-    margin: 0;
-    font-size: 1.5rem;
-    display: inline-block; 
-}
 
 .svg-inline--fa {
     display: inline-block;
-    font-size: 1rem;
+    font-size: .8rem;
     margin: 15px 10px 0 10px;
-     color: var(--colour2)
+     color: var(--colour2);
+    
+}
+.svg-inline--fa:hover{
+     cursor: pointer
 }
 
-li .listName {
-    text-align: center;
+/* media query styling begins here */
+@media (min-width: 480px) {
+    html {
+        font-size: 150%;
+    }
 }
 
-button {
-    border-radius: 10px;
-    padding: 15px;
+@media (min-width: 600px) {
+   html {
+        font-size: 175%;
+  }
+}
+
+@media (min-width: 900px) {
+   html {
+        font-size: 200%;
+  }
 }
 
 
