@@ -11,15 +11,16 @@
     z-index:10;
     width:100%;
     min-height:190%;
-    background: rgba(34, 31, 31, .9);
+    background: rgba(0, 0, 0, .85);
+    /* background: rgba(34, 31, 31, .9); */
 }
 
 .modalWrapper .content {
-    box-shadow:0 0 1px var(--colour3);
-    background:rgba(34, 31, 31, .5);
+    /* box-shadow:0 0 1px var(--colour3); */
+    background:rgb(34, 31, 31);
     min-width:300px;
     min-height:15%;
-    border-radius:7px;
+    border-radius:4px;
     padding:1em;
     position:absolute;
     left: 5%;
