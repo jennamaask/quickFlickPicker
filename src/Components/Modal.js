@@ -19,7 +19,6 @@ class Modal extends Component {
     this.state = {
       name: "",
       movies: [],
-      show: false,
     };
   }
 

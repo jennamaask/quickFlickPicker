@@ -23,6 +23,7 @@ h3 {
 } 
 
 p {
+    color: var(--colour3);
     font-size: 1rem;
     line-height: 1.25rem;
     letter-spacing: 1.25px;
@@ -37,6 +38,7 @@ p {
 
 /* links to movies & specific lists pages styling */
 a {
+    color: var(--colour3);
     text-decoration: none;
     font-size: 1rem;
     display: block;
@@ -50,6 +52,7 @@ a {
 
 li {
     padding: 15px 0;
+    color: var(--colour3);
 }
 li p {
     margin: 0;
@@ -82,11 +85,13 @@ ul {
     display: inline-block;
     font-size: .8rem;
     margin: 15px 10px 0 10px;
-     color: var(--colour2);
+    color: var(--colour3);
+    transition: color .6s ease-in-out;
     
 }
 .svg-inline--fa:hover{
-     cursor: pointer
+     cursor: pointer;
+     color: var(--colour2);
 }
 
 /* underline animation adapted from Animated Underline Hover CodePen https://codepen.io/jstn/pen/zuDst/ */
