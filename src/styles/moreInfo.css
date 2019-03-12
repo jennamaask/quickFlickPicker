@@ -81,9 +81,7 @@ p > span {
 }
 
 @media (min-width: 992px) {
-  /* html {
-    font-size: 125%;
-  } */
+  
   .wrapper {
     width: 60%;
   }
