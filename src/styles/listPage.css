@@ -118,7 +118,7 @@ ul {
 }
 
 /* media query styling begins here */
-@media (min-width: 480px) {
+/* @media (min-width: 480px) {
     html {
         font-size: 150%;
     }
@@ -134,7 +134,7 @@ ul {
    html {
         font-size: 200%;
   }
-}
+} */
 
 
 

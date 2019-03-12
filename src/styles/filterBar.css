@@ -1,1 +1,46 @@
 @import "./global.css";
+
+.results form {
+    margin: 0 auto 60px;
+}
+.results input[type="text"] {
+    border: none;
+    border-bottom: 1px solid var(--colour2);
+    background: none;
+    width: 90%;
+    float: left;
+    color: var(--colour3);
+    padding: 10px 0 5px 10px;
+    font-size: 1.5rem;
+}
+
+.results input[type="text"]::placeholder {
+    color: var(--colour3);
+}
+
+.results .wrapper {
+    max-width: 1400px;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.searchMovies {
+    background: none;   
+    border: none;
+    width: 5%;
+}
+
+.searchMovies .fa-search {
+    color: var(--colour2);
+    font-size: 1.5rem;  
+}
+
+.results h1 {
+    float: left;
+}
+
+.results a {
+    float: right;
+    margin: 50px;
+
+}

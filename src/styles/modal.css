@@ -28,7 +28,7 @@
     top: 15%;
 }
 
-form {
+.modalForm form {
     min-height: 100%;
     border: none;
     text-align: center;
