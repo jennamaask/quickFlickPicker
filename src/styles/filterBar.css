@@ -1,7 +1,7 @@
 @import "./global.css";
 
 .results form {
-    margin: 0 auto 60px;
+    margin: 25px auto 60px;
 }
 .results input[type="text"] {
     border: none;
@@ -11,7 +11,7 @@
     float: left;
     color: var(--colour3);
     padding: 10px 0 5px 10px;
-    font-size: 1.5rem;
+    font-size: 1rem;
 }
 
 .results input[type="text"]::placeholder {
@@ -32,16 +32,41 @@
 
 .searchMovies .fa-search {
     color: var(--colour2);
-    font-size: 1.5rem;  
+    font-size: 1rem;  
 }
 
 .results h1 {
-    float: left;
+    font-weight: 700;
 }
 
-.results a {
-    float: right;
-    margin: 50px;
-  
+.results .buttonStyle {
+    border: 1px solid var(--colour2);
+    color: var(--colour2);
+    padding: 3px 40px;
+    border-radius: 20px;
+}
+.results .buttonStyle:hover {
+    background-color: var(--colour2);
+    color: var(--colour1);
+
+}
+
+@media (min-width:800px) {
+    .results .buttonStyle {
+        margin: 50px;
+        float: right;  
+    }
+
+    .results input[type="text"] {
+        font-size: 1.5rem;
+    }
+
+    .searchMovies .fa-search {
+        font-size: 1.5rem;
+    }
+
+    .results h1 {
+        float: left;
+    }
 
 }

@@ -5,7 +5,9 @@
   --colour4: #f8f166;
 
   --headingFont: 'Playfair Display', serif;
+  --headingFontWeight: 700;
   --bodyFont: 'Roboto', sans-serif;
+
 }
 
 html {
@@ -29,5 +31,9 @@ p {
 
 img {
     display: block;
+}
+
+a {
+    text-decoration: none;
 }
 
