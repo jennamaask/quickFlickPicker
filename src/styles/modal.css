@@ -1,1 +1,99 @@
 @import "./global.css";
+
+/* create new List modal style sheet */
+.modalWrapper {
+    margin: 0;
+    position:absolute;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+    z-index:10;
+    width:100%;
+    min-height:190%;
+    background: rgba(0, 0, 0, .85);
+    /* background: rgba(34, 31, 31, .9); */
+}
+
+.modalWrapper .content {
+    /* box-shadow:0 0 1px var(--colour3); */
+    background:rgb(34, 31, 31);
+    min-width:300px;
+    min-height:15%;
+    border-radius:4px;
+    padding:1em;
+    position:absolute;
+    left: 5%;
+    right: 5%;
+    top: 15%;
+}
+
+form {
+    min-height: 100%;
+    border: none;
+    text-align: center;
+    padding-top: 100px;
+    min-width: 100%;
+}
+
+.modalWrapper [type="text"],
+.modalWrapper [type="submit"] {
+    background-color: var(--colour3);
+    text-align: center;
+    border-radius: 4px;
+    min-width: 80%;
+    border: none;
+    height: 50px;
+    margin: 5px 0;
+}
+
+
+
+.modalWrapper [type="text"]::placeholder {
+    text-align: center;
+}
+
+.modalWrapper [type="submit"]:hover {
+    background-color: var(--colour4);
+}
+
+/* modal exit button styling begins here */
+.modalClose {
+    float: right;
+    cursor: pointer;
+}
+
+.modalWrapper .svg-inline--fa {
+    color: var(--colour3);
+    transition: color .6s ease-in-out;
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.modalWrapper .svg-inline--fa:hover {
+    color: var(--colour2);
+}
+
+/* form accessibility styling */
+.modalWrapper [type="text"]:focus-within,
+.modalWrapper [type="submit"]:focus-within {
+    background-color: var(--colour1);
+    color: var(--colour4)
+}
+
+.modalWrapper [type="text"]:focus {
+     border-bottom: 2px solid var(--colour3)
+}
+.modalWrapper [type="submit"]:focus {
+    border: 2px solid var(--colour3)
+}
+
+
+
+/* media query styling begins here */
+@media (min-width: 900px) {
+   .modalWrapper .content {
+        left: 15%;
+        right: 15%;
+  }
+}
