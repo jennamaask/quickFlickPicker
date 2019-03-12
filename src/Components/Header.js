@@ -8,12 +8,15 @@ class Header extends Component {
     return (
       <div>
         <header>
-          <h1>Quick Flick Picker</h1>
-          <p>Search for movie</p>
-          <p>Add movies to lists</p>
-          <p>Answer some questions</p>
-          <p>We'll pick your flick quick</p>
-          <Link to="/results">Pick that Flick!</Link>
+          <div className="wrapper">
+            <h1>Quick Flick Picker</h1>
+            <div className="text">
+              <p>Search for movies.</p>
+              <p>Sort them into lists.</p>
+              <p>And we'll pick your flick, quick.</p>
+              <Link to="/results">Pick that Flick!</Link>
+            </div>
+          </div>
         </header>
       </div>
     );
