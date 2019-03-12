@@ -2,7 +2,15 @@ import React, { Component } from "react";
 import firebase from "../firebase.js";
 import Modal from "./Modal.js";
 import {Link} from "react-router-dom";
-import '../styles/listPage.css';
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
+import "../styles/listPage.css";
+
+
+library.add(faTimesCircle);
+
+
 
 
 class ListPage extends Component {
@@ -65,26 +73,34 @@ class ListPage extends Component {
   //on click of create new list, modal appears for user to enter list name, also this page is displaying the lists the user already has.
   render() {
     return (
-      <div>
+      <div className="listPage listPageWrapper">
         <h2>Movie Lists</h2>
-        <Link to="/results">Search More Movies</Link>
-        <button onClick={this.showModal}>Create new list</button>
+        <p className="instructions">
+          Welcome to the movie lists page! Select an existing list below to view
+          movies. Help the Quick Flicks community by adding movies to an existing list, or creating your own list to  add all of your favourite flicks.{" "}
+        </p>
+        <Link to="/results" className="link">Search More Movies</Link>
+        <a className="link" onClick={this.showModal}>
+          Create new list
+        </a>
         {this.state.show && <Modal handleClose={this.hideModal} />}
-        <ul>
+        <h3>Existing Lists:</h3>
+        <ul className="">
           {this.state.lists.map((listName, i) => {
             return (
-              <li key={i}>
+              <li key={i} className="listName clearfix">
                 <Link to={`/lists/${listName}`}>
-                {/* adding space back to list names displayed on list page */}
-                  <p>{listName.replace(/-/g, ' ')}</p>
+                  {/* adding space back to list names displayed on list page */}
+                  <p className="child">{listName.replace(/-/g, " ")}</p>
                 </Link>
-                <button 
-                  className="removeList" 
-                  onClick= { () => { this.removeList(listName) }}
-                >
-                  Remove List 
-                </button>
 
+                <FontAwesomeIcon
+                  className="removeList child"
+                  icon="times-circle"
+                  onClick={() => {
+                    this.removeList(listName);
+                  }}
+                />
               </li>
             );
           })}
