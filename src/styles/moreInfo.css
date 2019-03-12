@@ -67,8 +67,6 @@ p > span {
   width: 100%;
 }
 
-/**** screen meets or exceeds 768px ****/
-
 @media (min-width: 768px) {
   html {
     font-size: 93.6%;
@@ -82,8 +80,6 @@ p > span {
   }
 }
 
-/**** screen meets or exceeds 992px****/
-
 @media (min-width: 992px) {
   html {
     font-size: 125%;
@@ -96,8 +92,6 @@ p > span {
     width: 70%;
   }
 }
-
-/**** screen meets or exceeds 1400px ****/
 
 @media (min-width: 1400px) {
   .youTubeContainer,

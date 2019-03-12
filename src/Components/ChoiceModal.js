@@ -98,25 +98,25 @@ class ChoiceModal extends Component {
     return (
       <div className='mask'>
         <div className='mojal'>
-          <div className="closeIcon">
-          <FontAwesomeIcon
-            icon='times-circle'
-            onClick={this.props.handleClose}
-          />
+          <div className='closeIcon'>
+            <FontAwesomeIcon
+              icon='times-circle'
+              onClick={this.props.handleClose}
+            />
           </div>
-          <h2>Click any list to add {this.props.title}</h2>
+          <h3>Choose a list to add {this.props.title}</h3>
           <ul>
-          {this.state.lists.map(list => {
-            return (
-              <li
-                onClick={() => {
-                  this.chosenList(list);
-                }}
-              >
-                {list}
-              </li>
-            );
-          })}
+            {this.state.lists.map(list => {
+              return (
+                <li
+                  onClick={() => {
+                    this.chosenList(list);
+                  }}
+                >
+                  {list}
+                </li>
+              );
+            })}
           </ul>
         </div>
       </div>
