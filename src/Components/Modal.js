@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
-import firebase from 'firebase';
-import Swal from 'sweetalert2';
-import withReactContent from 'sweetalert2-react-content';
-import '../styles/modal.css';
+import React, { Component } from "react";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
+import firebase from "firebase";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+import "../styles/modal.css";
 
 const MySwal = withReactContent(Swal);
 
@@ -16,7 +16,7 @@ class Modal extends Component {
     super(props);
     //setting initial state
     this.state = {
-      name: '',
+      name: "",
       movies: []
     };
   }
@@ -31,12 +31,12 @@ class Modal extends Component {
       }
     }).then(() => {
       return MySwal.fire({
-        position: 'top-end',
-        type: 'success',
-        title: 'List created',
+        position: "top-end",
+        type: "success",
+        title: "List created",
         showConfirmButton: false,
         timer: 1500,
-        width: '25rem',
+        width: "25rem",
         toast: true
       });
     });
@@ -52,12 +52,12 @@ class Modal extends Component {
       }
     }).then(() => {
       return MySwal.fire({
-        position: 'top-end',
-        type: 'error',
-        title: 'Duplicate list name',
+        position: "top-end",
+        type: "error",
+        title: "Duplicate list name",
         showConfirmButton: false,
         timer: 1500,
-        width: '25rem'
+        width: "25rem"
       });
     });
   };
@@ -72,12 +72,12 @@ class Modal extends Component {
       }
     }).then(() => {
       return MySwal.fire({
-        position: 'top-end',
-        type: 'error',
-        title: 'Please enter list name',
+        position: "top-end",
+        type: "error",
+        title: "Please enter list name",
         showConfirmButton: false,
         timer: 1500,
-        width: '25rem'
+        width: "25rem"
       });
     });
   };
@@ -92,12 +92,12 @@ class Modal extends Component {
     event.preventDefault();
     this.setState({
       //removing spaces from listnames to use in URL
-      name: this.state.name.replace(/\s+/g, '-').toLowerCase()
+      name: this.state.name.replace(/\s+/g, "-").toLowerCase()
     });
     //conditional, if name is not an empty string, grab data from firebase
-    if (this.state.name !== '') {
+    if (this.state.name !== "") {
       const dbRef = firebase.database().ref();
-      dbRef.once('value').then(res => {
+      dbRef.once("value").then(res => {
         const response = res.val();
         let duplicate = false;
         //error handling re: case sensitive
@@ -117,7 +117,7 @@ class Modal extends Component {
           this.confirmAlert();
         }
         this.setState({
-          name: ''
+          name: ""
         });
       });
     } else {
@@ -129,30 +129,35 @@ class Modal extends Component {
   //user enters list name on change call handle change
   render() {
     return (
-      <div className='clearfix'>
-        <div className='mask'>
-          <div className='mojal'>
+      <div className="clearfix">
+        <div className="mask">
+          <div className="mojal">
             <FontAwesomeIcon
-              className='modalClose'
-              icon='times-circle'
+              className="modalClose"
+              icon="times-circle"
               onClick={this.props.handleClose}
             />
-            <form className='' onSubmit={this.handleSubmit}>
-              <label htmlFor='text' className='visuallyHidden'>
+            <form onSubmit={this.handleSubmit}>
+              <label htmlFor="text" className="visuallyHidden">
                 Enter List Name
               </label>
               <input
                 onChange={this.handleChange}
                 value={this.state.name}
-                type='text'
-                id='text'
-                name='name'
-                placeholder='Enter new list name'
+                type="text"
+                id="text"
+                name="name"
+                placeholder="Enter new list name"
               />
-              <label htmlFor='submit' className='visuallyHidden'>
+              <label htmlFor="submit" className="visuallyHidden">
                 Create List
               </label>
-              <input className='buttonStyle' type='submit' id='submit' value='Create list' />
+              <input
+                className="buttonStyle"
+                type="submit"
+                id="submit"
+                value="Create list"
+              />
             </form>
           </div>
         </div>
@@ -160,5 +165,4 @@ class Modal extends Component {
     );
   }
 }
-
 export default Modal;
