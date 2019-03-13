@@ -7,6 +7,10 @@
   margin: 10px;
 }
 
+.closeIcon .fa-times-circle:hover {
+  color: var(--colour2);
+}
+
 .mojal ul {
   text-decoration: none;
   list-style-type: none;

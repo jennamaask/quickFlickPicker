@@ -47,6 +47,10 @@ p > span {
   width: 100%;
 }
 
+.moreInfoIcons .buttonStyle:hover {
+  background: var(--colour2);
+}
+
 .youTubeContainer {
   margin: 0 auto 50px;
   width: 100%;
