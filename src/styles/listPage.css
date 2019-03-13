@@ -91,6 +91,7 @@ ul {
   border-radius: 5px;
   text-align: center;
   text-transform: capitalize;
+  background-color: var(--colour2);
 }
 
 .listNames .fa-times-circle {
