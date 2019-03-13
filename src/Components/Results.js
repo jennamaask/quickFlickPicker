@@ -50,7 +50,7 @@ class Results extends Component {
   //else, if the props is the user's search input, axios will pull up their search results
   componentDidMount() {
     this.updateImageSize();
-
+    this.equalHeightColumns();
     // TODO: Fix event listener so images resize on page resize
     window.addEventListener('resize', this.updateImageSize.bind(this));
 
