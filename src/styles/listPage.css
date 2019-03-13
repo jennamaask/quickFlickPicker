@@ -1,4 +1,4 @@
-@import './global.css';
+@import "./global.css";
 
 .listPageWrapper {
   width: 80%;
@@ -44,7 +44,6 @@
 }
 
 /* movie list text styling */
-
 li p {
   margin: 0;
   /* font-size: 1rem; */
@@ -52,7 +51,7 @@ li p {
 }
 
 li p::before {
-  content: '🎬';
+  content: "🎬";
   padding-right: 15px;
 }
 
@@ -87,7 +86,6 @@ ul {
 }
 
 .listNames .buttonStyle {
-  background-color: var(--colour2);
   color: var(--colour3);
   min-height: 100px;
   border-radius: 5px;
