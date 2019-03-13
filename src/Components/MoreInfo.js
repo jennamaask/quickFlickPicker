@@ -2,17 +2,8 @@ import React, { Component } from 'react';
 import YouTube from 'react-youtube';
 import axios from 'axios';
 import Footer from './Footer.js';
-import { Link } from 'react-router-dom';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faChevronCircleLeft,
-  faPlusCircle
-} from '@fortawesome/free-solid-svg-icons';
 import ChoiceModal from './ChoiceModal.js';
 import '../styles/moreInfo.css';
-
-library.add(faChevronCircleLeft, faPlusCircle);
 
 const apiKey = '220ba76687a248fe4b74726d993ed22f';
 

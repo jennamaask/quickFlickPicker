@@ -43,6 +43,7 @@ a {
   padding: 3px 40px;
   border-radius: 20px;
   margin: 25px 0;
+  background: var(--colour1);
 }
 
 .buttonStyle:hover {

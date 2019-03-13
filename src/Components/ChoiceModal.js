@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import firebase from '../firebase.js';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimesCircle, faDivide } from '@fortawesome/free-solid-svg-icons';
+import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import '../styles/choiceModal.css';
@@ -35,7 +35,7 @@ class ChoiceModal extends Component {
     });
   }
 
-  //user selects list to add movie to a speicifc list. Then go through each object in database response, checking to see if list names match, once we get to the list name that is the same as the list name we clicked on, we set matched object equal to the key of the same name - and then push the movie to the specific list.
+  //user selects list to add movie to a specific list. Then go through each object in database response, checking to see if list names match, once we get to the list name that is the same as the list name we clicked on, we set matched object equal to the key of the same name - and then push the movie to the specific list.
   chosenList = listName => {
     const dbRef = firebase.database().ref();
     let matchedObject = '';

@@ -5,7 +5,7 @@
   top: 0;
   right: 0;
   margin: 10px;
-   font-size: 1.2rem;
+  font-size: 1.2rem;
 }
 
 .mojal form {
@@ -26,10 +26,6 @@
 
 .mojal input[type='text']::placeholder {
   text-align: center;
-}
-
-.mojal .buttonStyle {
-  background: var(--colour1);
 }
 
 .mojal .buttonStyle:hover {
