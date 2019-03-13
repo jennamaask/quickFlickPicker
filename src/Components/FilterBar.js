@@ -20,7 +20,6 @@ class FilterBar extends Component {
     this.setState({
       searchQuery: event.target.value
     });
-    console.log(this.state.searchQuery);
   };
   //calling onFilterSubmit from App and passing the userInput as an argument
   handleFormSubmit = event => {

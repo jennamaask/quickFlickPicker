@@ -78,7 +78,7 @@ class ListPage extends Component {
               <Link to='/results' className='buttonStyle'>
                 Search Movies
               </Link>
-              <a className='buttonStyle' onClick={this.showModal}>
+              <a href="0" className='buttonStyle' onClick={this.showModal}>
                 Create new list
               </a>
             </div>
