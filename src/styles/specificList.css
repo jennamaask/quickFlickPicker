@@ -1,10 +1,81 @@
 @import './global.css';
 
-/* things i need help with.. making hamburger menu accesible,
-also hamburger menu is ugly
-ugly hover buttons on poster,
-should we keep the hamburger bar all the way or change into a nav
- */
+.specificList .wrapper {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.specificList h2 {
+    color: var(--colour2);
+    margin: 0;
+    padding: 40px 0 20px;
+    font-size: 2rem;
+    text-transform: capitalize;
+    font-size: 2.25rem;
+}
+
+.specificList form {
+    color: var(--colour3);
+    padding: 10px 0px;
+    border-radius: 20px;
+    clear: both;
+}
+
+.specificList select {
+    border: none;
+    background: url(../assets/downArrow.svg);
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    background-repeat: no-repeat;
+    background-size: 15px;
+    background-position: 95% 85%;
+    border-bottom: 1px solid var(--colour2);
+    color: var(--colour2);
+    padding: 5px 0;
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+.specificList input[type='submit'] {
+  width: 70%;
+  margin: 40px auto 40px;
+  padding: 5px 20px;
+  float: none;
+  text-align: center;
+}
+
+.specificList input[type='submit']:hover {
+  background: var(--colour2);
+  color: var(--colour1);
+}
+
+.specificList .buttonStyle {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+.specificList .buttonStyle:hover {
+    color: var(--colour1);
+    background: var(--colour2);
+}
+
+.specificList .movieList {
+    padding-top: 20px;
+}
+
+.specificList .poster {
+  position: relative;
+  width: 50%;
+  float: left;
+}
+
+.specificList .poster img {
+  width: 100%;
+  display: block;
+}
+
 .overlay {
   position: absolute;
   top: 0;
@@ -42,94 +113,15 @@ should we keep the hamburger bar all the way or change into a nav
   padding: 5px;
 }
 
-.specificList .poster {
-  position: relative;
-  width: 50%;
-  float: left;
-}
-
-.specificList .poster img {
-  width: 100%;
-  display: block;
-}
-
 .specificList p.empty {
   color: var(--colour2);
   font-size: 1rem;
 }
 
-.specificList .wrapper {
-  width: 90%;
-  margin: 0 auto;
-  min-height: 87vh;
-}
-
-.specificList form {
-  color: var(--colour3);
-  padding: 10px 0px;
-  border-radius: 20px;
-  clear: both;
-}
-
-.specificList select {
-  border: none;
-  background: url(../assets/downArrow.svg);
-  -moz-appearance: none;
-  -webkit-appearance: none;
-  appearance: none;
-  background-repeat: no-repeat;
-  background-size: 15px;
-  background-position: 95% 85%;
-  border-bottom: 1px solid var(--colour2);
-  color: var(--colour2);
-  padding: 5px 0;
-  margin: 0 10px;
-  cursor: pointer;
-}
-
-.specificList h2 {
-  color: var(--colour2);
-  margin: 0;
-  padding: 40px 0 20px;
-  font-size: 2rem;
-  text-transform: capitalize;
-  font-size: 2.25rem;
-}
-
-.specificList .movieList {
-  padding-top: 20px;
-}
-
-.specificList input[type='submit'] {
-  width: 70%;
-  margin: 40px auto 40px;
-  padding: 5px 20px;
-  background: var(--colour1);
-  float: none;
-  text-align: center;
-}
-
-.specificList input[type='submit']:hover {
-  background: var(--colour2);
-  /* border: 1px solid var(--colour2); */
-  color: var(--colour1);
-}
-
-.specificList .buttonStyle {
-  display: block;
-  width: 100%;
-  text-align: center;
-}
-
-.specificList .buttonStyle:hover {
-  color: var(--colour1);
-  background: var(--colour2);
-}
 
 @media (min-width: 560px) {
   .specificList .buttonStyle {
     float: left;
-    background: var(--colour1);
     width: calc(50% - 10px);
   }
 
@@ -148,6 +140,7 @@ should we keep the hamburger bar all the way or change into a nav
     text-align: center;
   }
 }
+
 @media (min-width: 800px) {
   .specificList .poster {
     width: 33.33%;
@@ -157,6 +150,7 @@ should we keep the hamburger bar all the way or change into a nav
     font-size: 1.5rem;
   }
 }
+
 @media (min-width: 1000px) {
   .specificList .poster {
     width: 25%;
