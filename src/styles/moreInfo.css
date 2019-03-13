@@ -1,8 +1,4 @@
 @import './global.css';
-/*
-html {
-  font-size: 82%;
-} */
 
 body {
   font-family: var(--bodyFont);
@@ -47,18 +43,8 @@ p > span {
 .moreInfoIcons {
   margin-bottom: 30px;
 }
-  .moreInfoIcons .buttonStyle {
-  background: var(--colour1);
+.moreInfoIcons .buttonStyle {
   width: 100%;
-}
-
-.moreInfoIcons .buttonStyle:hover {
-  background: var(--colour2);
-}
-
-.moreInfoIcons .fa-w-16:hover {
-  color: var(--colour2);
-  transform: scale(1.1);
 }
 
 .youTubeContainer {
@@ -68,13 +54,13 @@ p > span {
 
 @media (min-width: 480px) {
   .moreInfoIcons .buttonStyle {
-  background: var(--colour1);
-  width: calc(50% - 10px);
-}
+    background: var(--colour1);
+    width: calc(50% - 10px);
+  }
 
-.moreInfoIcons .buttonStyle:nth-of-type(1) {
-  margin-right: 20px;
-}
+  .moreInfoIcons .buttonStyle:nth-of-type(1) {
+    margin-right: 20px;
+  }
 }
 
 @media (min-width: 768px) {
