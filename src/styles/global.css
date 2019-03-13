@@ -79,3 +79,13 @@ a {
   color: var(--colour2);
   transform: scale(1.1);
 }
+
+input[type="text"]:focus,
+a:focus,
+.buttonStyle:focus,
+.results .buttonStyle:focus,
+.results input[type="text"]:focus,
+button:focus,
+.specificList select:focus {
+  border: 1px solid var(--colour4);
+}
