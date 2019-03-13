@@ -50,8 +50,7 @@ class Results extends Component {
   //else, if the props is the user's search input, axios will pull up their search results
   componentDidMount() {
     this.updateImageSize();
-
-    // TODO: Fix event listener so images resize on page resize
+    this.equalHeightColumns();
     window.addEventListener('resize', this.updateImageSize.bind(this));
 
     if (this.props.userSearchResult === '') {
@@ -116,7 +115,6 @@ class Results extends Component {
 
   equalHeightColumns = () => {
     // Set timeout to wait 1 second before running so the DOM loads prior to ReactDom running
-    // TODO: Find less hacky way to do this
     setTimeout(() => {
       // Grab all elements with the class of result
       const findImages = ReactDOM.findDOMNode(this).getElementsByClassName(
@@ -136,7 +134,7 @@ class Results extends Component {
       // Iterate through the array again and set each element to the height of the tallest
       for (let i = 0; i < findImages.length; i++) {
         findImages[i].style.height = tallest + 'px';
-        console.log(findImages[i]);
+        
       }
     }, 1000);
   };
