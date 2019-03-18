@@ -6,13 +6,6 @@ import Modal from './Modal.js';
 import Footer from './Footer.js';
 import '../styles/results.css';
 import ReactDOM from 'react-dom';
-import Tilt from 'react-tilt';
-import ChoiceModal from './ChoiceModal.js'
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
-
-library.add(faPlusCircle);
 
 const apiKey = '220ba76687a248fe4b74726d993ed22f';
 
@@ -23,21 +16,20 @@ class Results extends Component {
     this.state = {
       //setting initial state
       movies: [],
-      showCreate: false,
-      showChoice: false,
+      show: false,
       imageSize: 0
     };
   }
 
   //show / hide modal
-  showModal = (modal) => {
+  showModal = () => {
     this.setState({
-      [modal]: true
+      show: true
     });
   };
-  hideModal = (modal) => {
+  hideModal = () => {
     this.setState({
-      [modal]: false
+      show: false
     });
   };
 
@@ -58,7 +50,7 @@ class Results extends Component {
   //else, if the props is the user's search input, axios will pull up their search results
   componentDidMount() {
     this.updateImageSize();
-    // this.equalHeightColumns();
+    this.equalHeightColumns();
     window.addEventListener('resize', this.updateImageSize.bind(this));
 
     if (this.props.userSearchResult === '') {
@@ -92,7 +84,7 @@ class Results extends Component {
         movies: []
       });
       this.searchQueryCall(this.props.userSearchResult);
-      // this.equalHeightColumns();
+      this.equalHeightColumns();
     }
   }
 
@@ -147,65 +139,19 @@ class Results extends Component {
     }, 1000);
   };
 
-  getMovieInfo = (movieId) => {
-    axios({
-      method: 'get',
-      url: `https://api.themoviedb.org/3/movie/${
-        movieId
-        }`,
-      responseType: 'json',
-      params: {
-        api_key: apiKey,
-        append_to_response: 'videos,credits'
-      }
-    }).then(response => {
-      const genre = response.data.genres;
-
-      // These are the returned info:
-      const genreString = genre
-        .map(name => {
-          return name.name;
-        })
-        .join(', ');
-      //setting state to be returned values
-      this.setState({
-        movie: response.data,
-        genres: genreString,
-        showChoice: true,
-      });
-    });
-  }
-
   //mapping through movies and returning poster & title
   // taking onFilterSubmit function from Header, passing it down to be used in FilterBar
   render() {
     return (
       <div>
-        <div id="results" className="results">
-          {this.state.showCreate && <Modal handleClose={this.hideModal} />}
-          {this.state.showChoice && (
-            <ChoiceModal
-              title={this.state.movie.title}
-              poster={this.state.movie.poster_path}
-              duration={this.state.movie.runtime}
-              genre={this.state.genres}
-              movieId={this.state.movie.id}
-              handleClose={this.hideModal}
-            />
-          )}
-          <div className="wrapper">
-            <nav>
+        <div id='results' className='results'>
+          <div className='wrapper'>
+            <div className='clearfix'>
               <h1>Quick Flick Picker</h1>
-              <div className="links">
-                <Link to="/lists" className="buttonStyle">
-                  Go to Lists
-                </Link>
-                <button className="buttonStyle" onClick={() => {this.showModal('showCreate')}}>
-                  Create new list
-                </button>
-              
-              </div>
-            </nav>
+              <Link to='/lists' className='buttonStyle'>
+                Go to Lists
+              </Link>
+            </div>
             <FilterBar onFilterSubmit={this.props.onFilterSubmit} />
             {this.state.show && <Modal handleClose={this.hideModal} />}
           </div>
@@ -213,23 +159,17 @@ class Results extends Component {
           {this.state.movies.length === 0 ? (
             <p>Your search came back with no results</p>
           ) : (
-            <div className="resultsContainer">
+            <div className='resultsContainer clearfix'>
               {this.state.movies.map(movie => {
                 let url = `http://image.tmdb.org/t/p/w${
                   this.state.imageSize
                 }//${movie.poster_path}`;
                 return (
-                  <Tilt className="Tilt" options={{ max: 25, scale: 1 }}>
-                    <div key={movie.id} className="result Tilt-inner">
-                      <button 
-                        tooltip="Add to list" tooltip-position="bottom"
-                        onClick={() => {this.getMovieInfo(movie.id)}}
-                        ><FontAwesomeIcon  icon="plus-circle"/></button>
-                      <Link to={`/movies/${movie.id}`}>
-                        <img src={url} alt={`Poster of ${movie.title}`} />
-                      </Link>
-                    </div>
-                  </Tilt>
+                  <div key={movie.id} className='result'>
+                    <Link to={`/movies/${movie.id}`}>
+                      <img src={url} alt={`Poster of ${movie.title}`} />
+                    </Link>
+                  </div>
                 );
               })}
             </div>
