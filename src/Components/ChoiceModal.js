@@ -67,7 +67,7 @@ class ChoiceModal extends Component {
 
     //close modal on click
     this.confirmAlert();
-    this.props.handleClose("showChoice");
+    this.props.handleClose();
   };
 
   confirmAlert = () => {
@@ -101,7 +101,7 @@ class ChoiceModal extends Component {
           <div className='closeIcon'>
             <FontAwesomeIcon
               icon='times-circle'
-              onClick={() => { this.props.handleClose('showChoice') }}
+              onClick={this.props.handleClose}
             />
           </div>
           <h3>

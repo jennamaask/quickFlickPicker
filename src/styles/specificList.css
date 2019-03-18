@@ -54,7 +54,6 @@
   display: block;
   width: 100%;
   text-align: center;
-  line-height: 1.6;
 }
 
 .specificList .buttonStyle:hover {
@@ -68,6 +67,8 @@
 
 .specificList .poster {
   position: relative;
+  width: 50%;
+  float: left;
 }
 
 .specificList .poster img {
@@ -81,7 +82,7 @@
   bottom: 0;
   right: 0;
   left: 0;
-  background: rgb(0, 0, 0, 0.5);
+  background: rgb(248, 241, 102, 0.5);
   opacity: 0;
   transition: opacity 0.5s;
 }
@@ -91,36 +92,25 @@
 }
 
 .specificList .overlay a {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateX(-50%);
   background: var(--colour2);
   border-radius: 20px;
   color: var(--colour1);
   text-decoration: none;
-  /* width: 80%; */
-  /* margin: 40% 10% 20px; */
+  width: 80%;
+  margin: 40% 10% 20px;
   display: inline-block;
   text-align: center;
-  padding: 5px 10px;
+  padding: 5px;
 }
 
 .specificList .overlay button {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: transparent;
+  background: var(--colour2);
   border: none;
   color: var(--colour1);
-  /* margin: 20px 5%; */
-  /* border-radius: 20px; */
-  /* width: 90%; */
-  /* padding: 5px; */
-}
-
-.fa-minus-circle {
-  font-size: 1.3rem;
+  margin: 20px 5%;
+  border-radius: 20px;
+  width: 90%;
+  padding: 5px;
 }
 
 .specificList p.empty {
@@ -128,19 +118,11 @@
   font-size: 1rem;
 }
 
-.listContainer {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-}
-
 
 @media (min-width: 560px) {
   .specificList .buttonStyle {
     float: left;
     width: calc(50% - 10px);
-  }
-  .listContainer {
-    grid-template-columns: repeat(4, 1fr);
   }
 
   .specificList input[type='submit'] {
@@ -160,8 +142,8 @@
 }
 
 @media (min-width: 800px) {
-  .listContainer {
-    grid-template-columns: repeat(6, 1fr);
+  .specificList .poster {
+    width: 33.33%;
   }
 
   .specificList form {
@@ -170,8 +152,8 @@
 }
 
 @media (min-width: 1000px) {
-  .listContainer {
-    grid-template-columns: repeat(8, 1fr);
+  .specificList .poster {
+    width: 25%;
   }
 
   .specificList h2 {

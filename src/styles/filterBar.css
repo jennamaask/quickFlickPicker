@@ -39,6 +39,12 @@
     font-weight: 700;
 }
 
+.results .buttonStyle {
+    border: 1px solid var(--colour2);
+    color: var(--colour2);
+    padding: 3px 40px;
+    border-radius: 20px;
+}
 .results .buttonStyle:hover {
     background-color: var(--colour2);
     color: var(--colour1);
@@ -46,6 +52,10 @@
 }
 
 @media (min-width:800px) {
+    .results .buttonStyle {
+        margin: 50px;
+        float: right;  
+    }
 
     .results input[type="text"] {
         font-size: 1.5rem;
@@ -55,5 +65,8 @@
         font-size: 1.5rem;
     }
 
+    .results h1 {
+        float: left;
+    }
 
 }
